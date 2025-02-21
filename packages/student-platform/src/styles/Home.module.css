@@ -1,0 +1,23 @@
+.homeContainer {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.buttonContainer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #005bb5;
+}
