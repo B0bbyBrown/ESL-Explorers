@@ -5,7 +5,7 @@ const Contact: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Contact - ESL Explorers</title>
+        <title>Contact - ESL</title>
         <meta
           name="description"
           content="Get in touch with us for more information."
