@@ -5,9 +5,10 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   {
     auth: {
-      persistSession: true, // ✅ Ensures session is stored and shared across pages
-      autoRefreshToken: true, // ✅ Automatically refreshes authentication token
-      detectSessionInUrl: true, // ✅ Detects session in URL to prevent login issues
+      persistSession: false, // Don't persist session from other platforms
+      storageKey: "student-platform-auth", // Platform-specific storage key
+      autoRefreshToken: false, // Prevent automatic token refresh
+      detectSessionInUrl: false, // Don't detect session in URL
     },
   }
 );

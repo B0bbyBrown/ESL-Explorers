@@ -4,6 +4,7 @@ import supabase from "../services/supabase";
 import DashboardHeader from "../components/layout/DashboardHeader";
 import Sidebar from "../components/layout/Sidebar";
 import { Session } from "@supabase/supabase-js";
+
 export default function StudentDashboard() {
   const router = useRouter();
   const [session, setSession] = useState<Session | null>(null);
@@ -13,7 +14,7 @@ export default function StudentDashboard() {
       const { data } = await supabase.auth.getSession();
 
       if (!data?.session) {
-        router.push("/login/student"); // Redirect if not logged in
+        router.push("http://localhost:3000/login/student"); // Redirect if not logged in
       } else {
         setSession(data.session);
       }

@@ -27,7 +27,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    window.location.reload();
+
+    // Clear any stored session data
+    localStorage.removeItem("supabase.auth.token");
+
+    // Force reload to ensure clean state
+    window.location.href = "/";
   };
 
   return (

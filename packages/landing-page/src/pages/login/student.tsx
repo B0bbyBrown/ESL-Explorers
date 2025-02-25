@@ -39,7 +39,7 @@ export default function StudentLoginPage() {
       return;
     }
 
-    router.push("http://localhost:3001/");
+    router.push("http://localhost:3001/dashboard");
   };
 
   return (
@@ -61,7 +61,7 @@ export default function StudentLoginPage() {
           required
         />
         <button type="submit">Log In</button>
-        <button type="button" onClick={() => router.push("/login")}>
+        <button type="button" onClick={() => router.push("/")}>
           Back
         </button>
       </form>
