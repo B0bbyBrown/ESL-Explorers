@@ -16,6 +16,8 @@
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
     "dotenv": "^16.4.7",
+    "glob": "^11.0.1",
+    "lru-cache": "^11.0.2",
     "next": "^14.2.24",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -24,7 +26,6 @@
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "eslint": "^8.57.0",
     "eslint-config-next": "14.1.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3"
