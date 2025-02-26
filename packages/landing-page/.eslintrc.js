@@ -1,6 +1,10 @@
 const path = require("path");
 
 module.exports = {
+  extends: ["next/core-web-vitals"],
+  rules: {
+    // your rules here
+  },
   entry: "./src/pages/_app.tsx", // Adjust the entry point as needed
   output: {
     filename: "bundle.js",
