@@ -1,38 +1,43 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import supabase from "../services/supabase";
-import DashboardHeader from "../components/layout/DashboardHeader";
-import Sidebar from "../components/layout/Sidebar";
-import { Session } from "@supabase/supabase-js";
+import { useEffect } from "react";
+import { useSession } from "../contexts/SessionContext";
+import { StudentDashboard } from "../components/StudentDashboard";
+import LoadingState from "../components/LoadingState";
+import { MAIN_SITE_URL } from "../utils/constants";
 
-export default function StudentDashboard() {
-  const router = useRouter();
-  const [session, setSession] = useState<Session | null>(null);
+export default function Home() {
+  const { session, loading, isStudent } = useSession();
 
   useEffect(() => {
-    const checkSession = async () => {
-      const { data } = await supabase.auth.getSession();
+    // Detailed session logging
+    console.group("Student Platform - Home Page");
+    console.log("Loading state:", loading);
+    console.log("Session:", {
+      exists: !!session,
+      email: session?.user?.email,
+      metadata: session?.user?.user_metadata,
+    });
+    console.log("Is Student:", isStudent);
+    console.groupEnd();
 
-      if (!data?.session) {
-        router.push("http://localhost:3000/login/student"); // Redirect if not logged in
-      } else {
-        setSession(data.session);
-      }
-    };
+    // Only redirect if we're sure there's no valid session
+    if (!loading && (!session || !isStudent)) {
+      console.log("🚨 Redirecting to main site:", {
+        reason: {
+          noSession: !session,
+          notStudent: !isStudent,
+        },
+      });
+      window.location.href = MAIN_SITE_URL;
+    }
+  }, [session, loading, isStudent]);
 
-    checkSession();
-  }, []);
+  if (loading) return <LoadingState />;
+  if (!session || !isStudent) return null;
 
-  if (!session) return <p>Loading...</p>;
-
-  return (
-    <div className="dashboard-layout">
-      <Sidebar />
-      <div className="dashboard-content">
-        <DashboardHeader />
-        <h2>Welcome to Your Student Dashboard</h2>
-        <p>Select an option from the sidebar:</p>
-      </div>
-    </div>
+  // Show dashboard if both conditions are true
+  console.log(
+    "✅ Student Platform - Rendering dashboard for:",
+    session.user.email
   );
+  return <StudentDashboard />;
 }

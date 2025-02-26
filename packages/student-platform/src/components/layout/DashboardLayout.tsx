@@ -1,13 +1,14 @@
+import { ReactNode } from "react";
 import Sidebar from "./Sidebar";
 import DashboardHeader from "./DashboardHeader";
 import styles from "./DashboardLayout.module.css";
 
-interface LayoutProps {
-  children: React.ReactNode;
+interface DashboardLayoutProps {
+  children: ReactNode;
   setActivePage: (page: string) => void;
 }
 
-const DashboardLayout: React.FC<LayoutProps> = ({
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
   setActivePage,
 }) => {

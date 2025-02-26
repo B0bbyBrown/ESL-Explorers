@@ -1,3 +1,4 @@
+import React from "react";
 import { useAuth } from "../auth/AuthProvider";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
@@ -18,10 +19,13 @@ export default function Navbar() {
         ) : (
           <>
             <li>
-              <Link href={"/login"}>Login</Link>
+              <Link href="/login/student/">Student Login</Link>
             </li>
             <li>
-              <Link href={"/register"}>Register</Link>
+              <Link href="/login/teacher/">Teacher Login</Link>
+            </li>
+            <li>
+              <Link href="/register/">Register</Link>
             </li>
           </>
         )}

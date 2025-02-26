@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from "../../../lib/supabase";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -17,13 +12,13 @@ export default function AdminLoginPage() {
     e.preventDefault();
     setError("");
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (error) {
-      setError(error.message);
+    if (signInError) {
+      setError(signInError.message);
       return;
     }
 
@@ -31,7 +26,7 @@ export default function AdminLoginPage() {
     const { data: userData, error: userError } = await supabase
       .from("users")
       .select("role")
-      .eq("email", email) // ✅ Use email instead of ID for lookup
+      .eq("email", email)
       .single();
 
     if (userError || !userData) {

@@ -1,24 +1,18 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-const About: NextPage = () => {
-  return (
-    <>
-      <Head>
-        <title>About - ESL Explorers</title>
-        <meta
-          name="description"
-          content="Learn more about ESL Explorers and our mission."
-        />
-      </Head>
-      <div style={{ padding: "2rem" }}>
-        <h1>About Us</h1>
-        <p>
-          ESL Explorers is dedicated to improving English skills through
-          interactive lessons and expert guidance.
-        </p>
-      </div>
-    </>
-  );
-};
+import styles from "../styles/pages/Content.module.css";
 
-export default About;
+export function AboutPage() {
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>About ESL Explorers</h1>
+      <div className={styles.content}>
+        <p>
+          ESL Explorers is a comprehensive online platform dedicated to making
+          English language learning accessible, engaging, and effective.
+        </p>
+        {/* Add more content */}
+      </div>
+    </div>
+  );
+}
+
+export default AboutPage;

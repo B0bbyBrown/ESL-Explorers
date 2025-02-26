@@ -1,3 +1,51 @@
+.header {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+}
+
+.nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftNav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mainNav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #111827;
+  text-decoration: none;
+}
+
+.navLink {
+  color: #4b5563;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #111827;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -31,10 +79,4 @@
 .nav-links button:hover,
 .auth-links button:hover {
   text-decoration: underline;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
 }

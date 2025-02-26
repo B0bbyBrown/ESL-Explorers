@@ -1,3 +1,7 @@
+import React, { useState } from "react";
+import Link from "next/link";
+import styles from "../../styles/Auth.module.css";
+import type { Platform } from "../../types";
 import { useRouter } from "next/router";
 
 export default function Register() {

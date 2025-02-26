@@ -1,25 +1,25 @@
-import { useRouter } from "next/router";
 import styles from "./Sidebar.module.css";
 
-export default function Sidebar() {
-  const router = useRouter();
+interface SidebarProps {
+  setActivePage: (page: string) => void;
+}
 
+export const Sidebar: React.FC<SidebarProps> = ({ setActivePage }) => {
   return (
     <aside className={styles.sidebar}>
-      <ul>
-        <li>
-          <button onClick={() => router.push("/")}>🏠 Dashboard</button>
-        </li>
-        <li>
-          <button onClick={() => router.push("/lessons")}>📖 Lessons</button>
-        </li>
-        <li>
-          <button onClick={() => router.push("/progress")}>📊 Progress</button>
-        </li>
-        <li>
-          <button onClick={() => router.push("/settings")}>⚙️ Settings</button>
-        </li>
-      </ul>
+      <div className={styles.logo}>ESL Explorers</div>
+      <nav className={styles.nav}>
+        <ul>
+          <li onClick={() => setActivePage("dashboard")}>Dashboard</li>
+          <li onClick={() => setActivePage("lessons")}>My Lessons</li>
+          <li onClick={() => setActivePage("assignments")}>Assignments</li>
+          <li onClick={() => setActivePage("progress")}>Progress</li>
+          <li onClick={() => setActivePage("resources")}>Resources</li>
+          <li onClick={() => setActivePage("settings")}>Settings</li>
+        </ul>
+      </nav>
     </aside>
   );
-}
+};
+
+export default Sidebar;
