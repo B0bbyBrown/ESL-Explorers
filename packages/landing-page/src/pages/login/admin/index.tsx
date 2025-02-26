@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { supabase } from "../../../lib/supabase";
+import { supabase } from "../../../lib/supabaseClient";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -39,8 +39,8 @@ export default function AdminLoginPage() {
       return;
     }
 
-    // Redirect to Admin Dashboard
-    router.push("/admin/dashboard");
+    // Redirect to Admin Dashboard  UPDATE
+    router.push("/");
   };
 
   return (

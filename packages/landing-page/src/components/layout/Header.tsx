@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AuthNav from "./AuthNav";
-import styles from "./Header.module.css";
+import styles from "../Styles/Header.module.css";
 
 export function Header() {
   return (

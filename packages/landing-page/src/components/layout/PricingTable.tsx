@@ -1,4 +1,4 @@
-import styles from "./Styles/PricingTable.module.css";
+import styles from "../Styles/PricingTable.module.css";
 
 const PricingTable = () => {
   return (

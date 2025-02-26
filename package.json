@@ -4,5 +4,11 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "next": "^15.1.7"
+  },
+  "scripts": {
+    "build:config": "tsc next.config.ts --outDir . --module es2022 --moduleResolution bundler"
+  }
 }

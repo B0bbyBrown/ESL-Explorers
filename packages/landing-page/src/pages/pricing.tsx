@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import PricingTable from "../components/PricingTable";
+import PricingTable from "../components/layout/PricingTable";
 
 const Pricing: NextPage = () => {
   return (

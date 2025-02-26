@@ -6,7 +6,7 @@ const supabase = createClient(
   {
     auth: {
       persistSession: true,
-      storageKey: "supabase.auth.token",
+      storageKey: "student.auth.token",
       autoRefreshToken: true,
       detectSessionInUrl: true,
     },

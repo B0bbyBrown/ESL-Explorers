@@ -1,108 +1,95 @@
 import { useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import styles from "./Auth.module.css";
+import { supabase } from "../../../../global-comps/src/utils/supabaseClient";
+import styles from "./Styles/AuthForm.module.css";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
-export default function LoginForm({ closeModal }: { closeModal: () => void }) {
+export const LoginForm = ({
+  platform,
+}: {
+  platform: "student" | "teacher";
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [platform, setPlatform] = useState<"student" | "teacher" | null>(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
-    if (!platform) {
-      setError("⚠️ Please select a platform (Student or Teacher)");
-      return;
-    }
+    try {
+      // 1. Sign in
+      const { data, error: signInError } =
+        await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+      if (signInError) throw signInError;
 
-    if (error) {
-      setError(error.message);
-      return;
-    }
+      // 2. Verify user role
+      const { data: userData, error: userError } = await supabase
+        .from("users")
+        .select("role")
+        .eq("id", data.user?.id)
+        .single();
 
-    const { data: userData, error: userError } = await supabase
-      .from("users")
-      .select("role")
-      .eq("id", data.user?.id)
-      .single();
+      if (userError || !userData) {
+        throw new Error("Error retrieving user role");
+      }
 
-    if (userError || !userData) {
-      setError("❌ Error retrieving user role.");
-      return;
-    }
+      if (userData.role !== platform) {
+        throw new Error(
+          `Account is registered as a ${userData.role}, not a ${platform}`
+        );
+      }
 
-    if (userData.role !== platform) {
+      // 3. Update session metadata
+      await supabase.auth.updateUser({
+        data: { role: platform, last_login: new Date().toISOString() },
+      });
+
+      // 4. Redirect to appropriate platform
+      const platformUrl =
+        platform === "teacher"
+          ? process.env.NEXT_PUBLIC_TEACHER_URL
+          : process.env.NEXT_PUBLIC_STUDENT_URL;
+
+      window.location.href = `${platformUrl}/dashboard`;
+    } catch (error) {
+      console.error("Login error:", error);
       setError(
-        `❌ Your account is registered as a ${userData.role}, not a ${platform}.`
+        error instanceof Error ? error.message : "An unexpected error occurred"
       );
-      return;
+      await supabase.auth.signOut();
+    } finally {
+      setLoading(false);
     }
-
-    window.location.href =
-      platform === "teacher"
-        ? "http://localhost:3001/dashboard"
-        : "http://localhost:3002/dashboard";
   };
 
   return (
-    <div className={styles.modal}>
-      <div className={styles.modalContent}>
-        <h2>Login</h2>
-        <form onSubmit={handleLogin}>
-          <label>
-            <input
-              type="radio"
-              name="platform"
-              value="student"
-              onChange={() => setPlatform("student")}
-              required
-            />{" "}
-            Student
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="platform"
-              value="teacher"
-              onChange={() => setPlatform("teacher")}
-              required
-            />{" "}
-            Teacher
-          </label>
-
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit">Log In</button>
-        </form>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button onClick={closeModal} className={styles.closeButton}>
-          Close
+    <div className={styles.formContainer}>
+      <h2>{platform.charAt(0).toUpperCase() + platform.slice(1)} Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
-      </div>
+      </form>
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
-}
+};

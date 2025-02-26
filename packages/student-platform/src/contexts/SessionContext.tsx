@@ -3,11 +3,11 @@ import { Session } from "@supabase/supabase-js";
 import supabase from "../lib/supabase";
 import { MAIN_SITE_URL } from "../utils/constants";
 
-type SessionContextType = {
+interface SessionContextType {
   session: Session | null;
   loading: boolean;
   isStudent: boolean;
-};
+}
 
 const SessionContext = createContext<SessionContextType>({
   session: null,
@@ -24,114 +24,50 @@ export const SessionProvider = ({
   const [loading, setLoading] = useState(true);
   const [isStudent, setIsStudent] = useState(false);
 
-  const checkPlatform = async (session: Session | null) => {
-    if (!session?.user) {
-      console.log("❌ No user in session");
-      return false;
-    }
-
-    console.log("🔍 Checking session:", {
-      userId: session.user.id,
-      email: session.user.email,
-      metadata: session.user.user_metadata,
-      appMetadata: session.user.app_metadata,
-    });
-
-    // Check metadata in multiple locations
-    const metadata = session.user.user_metadata;
-    const appMetadata = session.user.app_metadata;
-
-    const isValid =
-      (metadata?.role === "student" && metadata?.platform === "student") ||
-      appMetadata?.role === "student";
-
-    console.log("✅ Session check result:", {
-      metadata,
-      appMetadata,
-      isValid,
-    });
-
-    return isValid;
-  };
-
   useEffect(() => {
-    let mounted = true;
-    console.log("🔄 SessionProvider mounted");
-
-    const initSession = async () => {
+    const checkSession = async () => {
       try {
-        console.log("📥 Fetching initial session");
         const {
           data: { session: currentSession },
-          error: sessionError,
         } = await supabase.auth.getSession();
 
-        if (sessionError) {
-          console.error("❌ Error fetching session:", sessionError.message);
-          return;
-        }
-
         if (!currentSession) {
-          console.log("⚠️ No session found");
-          if (mounted) setLoading(false);
+          setLoading(false);
           return;
         }
 
-        console.log("✅ Session retrieved:", {
-          user: currentSession.user.email,
-          expiresAt: new Date(
-            currentSession.expires_at! * 1000
-          ).toLocaleString(),
-        });
+        const userRole = currentSession.user.user_metadata.role;
 
-        if (mounted) {
-          const isValidStudent = await checkPlatform(currentSession);
-
-          if (!isValidStudent) {
-            console.log("⚠️ Invalid student session, signing out");
-            await supabase.auth.signOut();
-            window.location.replace(MAIN_SITE_URL);
-            return;
-          }
-
-          console.log("✅ Valid student session confirmed");
-          setSession(currentSession);
-          setIsStudent(true);
-          setLoading(false);
-        }
-      } catch (error) {
-        console.error("❌ Session initialization error:", error);
-        if (mounted) setLoading(false);
-      }
-    };
-
-    initSession();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, currentSession) => {
-      console.log("🔄 Auth state changed:", event);
-
-      if (mounted && currentSession) {
-        const isValidStudent = await checkPlatform(currentSession);
-
-        if (!isValidStudent) {
-          console.log("⚠️ Invalid session state");
+        if (userRole !== "student") {
+          console.log("Invalid platform access, redirecting...");
           await supabase.auth.signOut();
-          window.location.replace(MAIN_SITE_URL);
+          window.location.href = MAIN_SITE_URL;
           return;
         }
 
         setSession(currentSession);
         setIsStudent(true);
+      } catch (error) {
+        console.error("Session check error:", error);
+        window.location.href = MAIN_SITE_URL;
+      } finally {
         setLoading(false);
       }
+    };
+
+    checkSession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === "SIGNED_OUT") {
+        window.location.href = MAIN_SITE_URL;
+      }
+      setSession(session);
+      setIsStudent(session?.user.user_metadata.role === "student");
     });
 
-    return () => {
-      mounted = false;
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   return (
@@ -143,7 +79,7 @@ export const SessionProvider = ({
 
 export const useSession = () => {
   const context = useContext(SessionContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useSession must be used within a SessionProvider");
   }
   return context;
