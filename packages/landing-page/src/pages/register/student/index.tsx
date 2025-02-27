@@ -15,6 +15,7 @@ export default function StudentRegisterPage() {
     setError("");
     setSuccess("");
 
+    // 1. Create auth user in Supabase auth
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -25,16 +26,25 @@ export default function StudentRegisterPage() {
       return;
     }
 
-    // ✅ Store user role in the `users` table
-    await supabase
-      .from("users")
-      .insert([{ id: data.user?.id, name, email, role: "student" }]);
+    // 2. Store user role in the `users` table
+    await supabase.from("users").insert([
+      {
+        id: data.user?.id, // Uses the auth user ID
+        name,
+        email,
+        role: "student",
+      },
+    ]);
 
-    await supabase
-      .from("students")
-      .insert([
-        { id: data.user?.id, name, email, subscription_status: "inactive" },
-      ]);
+    // 3. Create student record in the `students` table
+    await supabase.from("students").insert([
+      {
+        id: data.user?.id, // Uses the same auth user ID
+        name,
+        email,
+        subscription_status: "inactive",
+      },
+    ]);
 
     setSuccess("✅ Registration successful! Check your email.");
   };
