@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "global-comps/*": ["packages/global-comps/*"],
+      "landing-page/*": ["packages/landing-page/*"],
+      "admin-page/*": ["packages/admin-page/*"],
+      "teacher-page/*": ["packages/teacher-page/*"],
+      "student-page/*": ["packages/student-page/*"],
+      "teacher-dashboard/*": ["packages/teacher-dashboard/*"],
+      "student-dashboard/*": ["packages/student-dashboard/*"]
+    }
+  }
+}

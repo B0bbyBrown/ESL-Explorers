@@ -6,7 +6,18 @@
     "packages/*"
   ],
   "dependencies": {
-    "next": "^15.1.7"
+    "next": "^15.1.7",
+    "lru-cache": "^11.0.2",
+    "rimraf": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/config-array": "^1.0.0",
+    "@eslint/object-schema": "^1.0.0",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
+    "rimraf": "^5.0.5",
+    "glob": "^10.3.10",
+    "lru-cache": "^10.2.0"
   },
   "scripts": {
     "dev": "npm run dev --workspace=landing-page",
@@ -14,5 +25,9 @@
     "dev:student": "npm run dev --workspace=student-platform",
     "dev:teacher": "npm run dev --workspace=teacher-platform",
     "build:config": "tsc next.config.ts --outDir . --module es2022 --moduleResolution bundler"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": "^10.2.4"
   }
 }

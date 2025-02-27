@@ -137,17 +137,28 @@ var __generator =
     }
   };
 Object.defineProperty(exports, "__esModule", { value: true });
-var config = {
+/** @type {import('next').NextConfig} */
+const config = {
   /* config options here */
   reactStrictMode: true,
   // Add other configuration options here
-  transpilePackages: ["global-comps"], // Add your workspace package name here
+  transpilePackages: [
+    "global-comps",
+    "landing-page",
+    "admin-page",
+    "teacher-page",
+    "student-page",
+    "teacher-dashboard",
+    "student-dashboard",
+  ],
   webpack: (config) => {
     config.resolve.extensions.push(".ts", ".tsx");
     return config;
   },
 };
-exports.default = config;
+
+module.exports = config;
+
 module.exports = {
   headers: function () {
     return __awaiter(this, void 0, void 0, function () {

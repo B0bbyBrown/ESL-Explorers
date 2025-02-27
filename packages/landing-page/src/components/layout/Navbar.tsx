@@ -1,4 +1,4 @@
-import styles from "../Styles/Navbar.module.css";
+import styles from "../styles/Navbar.module.css";
 import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -11,11 +11,9 @@ export default function Navbar() {
         <div className="logo">ESL Explorers</div>
         <ul className="nav-links">
           {user ? (
-            <button>
-              <li>
-                <button onClick={logout}>Logout</button>
-              </li>
-            </button>
+            <li>
+              <button onClick={logout}>Logout</button>
+            </li>
           ) : (
             <>
               <li>
