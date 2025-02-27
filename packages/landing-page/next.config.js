@@ -138,26 +138,16 @@ var __generator =
   };
 Object.defineProperty(exports, "__esModule", { value: true });
 /** @type {import('next').NextConfig} */
-const config = {
-  /* config options here */
+const nextConfig = {
   reactStrictMode: true,
-  // Add other configuration options here
-  transpilePackages: [
-    "global-comps",
-    "landing-page",
-    "admin-page",
-    "teacher-page",
-    "student-page",
-    "teacher-dashboard",
-    "student-dashboard",
-  ],
+  transpilePackages: ["global-comps"],
   webpack: (config) => {
     config.resolve.extensions.push(".ts", ".tsx");
     return config;
   },
 };
 
-module.exports = config;
+module.exports = nextConfig;
 
 module.exports = {
   headers: function () {

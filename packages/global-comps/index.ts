@@ -1,2 +1,2 @@
-export * from "./utils/platformUrls";
-export * from "./utils/supabaseClient";
+export * from "./src/utils/supabaseClient";
+export * from "./src/utils/platformUrls";

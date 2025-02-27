@@ -6,21 +6,20 @@
     "packages/*"
   ],
   "dependencies": {
-    "next": "^15.1.7",
-    "lru-cache": "^11.0.2",
+    "next": "^14.1.0",
+    "lru-cache": "^10.2.0",
     "rimraf": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/config-array": "^1.0.0",
-    "@eslint/object-schema": "^1.0.0",
+    "@eslint/eslintrc": "^3.0.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.1.0",
     "rimraf": "^5.0.5",
-    "glob": "^10.3.10",
-    "lru-cache": "^10.2.0"
+    "glob": "^10.3.10"
   },
   "scripts": {
-    "dev": "npm run dev --workspace=landing-page",
+    "build:global": "npm run build --workspace=global-comps",
+    "dev": "npm run build:global && npm run dev --workspace=landing-page",
     "dev:landing": "npm run dev --workspace=landing-page",
     "dev:student": "npm run dev --workspace=student-platform",
     "dev:teacher": "npm run dev --workspace=teacher-platform",

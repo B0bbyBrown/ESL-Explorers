@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { supabase } from "../../../../../global-comps/utils/supabaseClient";
+import { supabase } from "global-comps/src/utils/supabaseClient";
 import styles from "../../../styles/Auth.module.css";
 
 export default function StudentLoginPage() {

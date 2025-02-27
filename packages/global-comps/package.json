@@ -2,14 +2,16 @@
   "name": "global-comps",
   "version": "1.0.0",
   "private": true,
-  "main": "index.ts",
-  "types": "index.ts",
-  "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
-    "typescript": "^5.0.0"
-  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
   }
 }
