@@ -9,6 +9,10 @@
     "next": "^15.1.7"
   },
   "scripts": {
+    "dev": "npm run dev --workspace=landing-page",
+    "dev:landing": "npm run dev --workspace=landing-page",
+    "dev:student": "npm run dev --workspace=student-platform",
+    "dev:teacher": "npm run dev --workspace=teacher-platform",
     "build:config": "tsc next.config.ts --outDir . --module es2022 --moduleResolution bundler"
   }
 }
