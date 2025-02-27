@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../../../../global-comps/src/utils/supabaseClient";
+import { supabase } from "../../../../global-comps/utils/supabaseClient";
 import styles from "./Styles/AuthForm.module.css";
 
 export const LoginForm = ({

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { supabase } from "../../../../../global-comps/src/utils/supabaseClient";
+import { supabase } from "../../../../../global-comps/utils/supabaseClient";
 
 export default function TeacherRegisterPage() {
   const router = useRouter();

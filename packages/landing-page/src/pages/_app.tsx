@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import { AuthProvider } from "../contexts/authContext";
+import { AuthProvider } from "../contexts/AuthContext";
 
 import styles from "../styles/layout/App.module.css";
 

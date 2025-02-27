@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../Styles/Navbar.module.css";
+import styles from "../styles/Navbar.module.css";
 import Link from "next/link";
-import { useAuth } from "../../contexts/authContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
