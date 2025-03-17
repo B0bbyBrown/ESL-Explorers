@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/*": ["packages/landing-page/src/*"],
       "global-comps/*": ["packages/global-comps/*"],
       "landing-page/*": ["packages/landing-page/*"],
       "admin-page/*": ["packages/admin-page/*"],
