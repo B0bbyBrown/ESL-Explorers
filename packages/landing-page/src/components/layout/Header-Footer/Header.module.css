@@ -6,7 +6,7 @@
   background: white;
   z-index: 100;
   padding: 1rem 0;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .container {
@@ -20,24 +20,28 @@
 
 .logo {
   text-decoration: none;
-}
-
-.logoWrapper {
   padding: 0.5rem 1rem;
   background: #f0f0f0;
-  border-radius: 4px;
+  border-radius: 2rem;
   font-weight: 500;
+  color: #333;
 }
 
 .nav {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .navLink {
   text-decoration: none;
-  color: #333;
+  color: #666;
   font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #333;
 }
 
 .authButtons {
@@ -47,21 +51,32 @@
 
 .registerButton,
 .loginButton {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
   text-decoration: none;
   font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
 .registerButton {
   background: #333;
   color: white;
+  border: none;
+}
+
+.registerButton:hover {
+  background: #444;
 }
 
 .loginButton {
   background: transparent;
-  color: #333;
+  color: #666;
   border: 1px solid #ddd;
+}
+
+.loginButton:hover {
+  border-color: #999;
+  color: #333;
 }
 
 /* Desktop Navigation
@@ -200,18 +215,20 @@ Mobile Menu Button .mobileMenuButton {
 }
 
 /* Responsive Styles */
-@media (min-width: 768px) {
-  .mobileMenuButton {
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .nav {
     display: none;
   }
 
-  .desktopNav {
-    display: flex;
-    align-items: center;
+  .authButtons {
+    display: none;
   }
 
-  .desktopAuthButtons {
-    display: flex;
-    align-items: center;
+  .mobileMenuButton {
+    display: block;
   }
 }

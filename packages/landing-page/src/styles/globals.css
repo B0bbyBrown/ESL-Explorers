@@ -7,6 +7,12 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
@@ -15,14 +21,5 @@ body {
 
 .content {
   flex: 1;
-}
-
-.footer {
-  text-align: center;
-  padding: 15px;
-  background: #222;
-  color: white;
-  width: 97%;
-  position: relative;
-  bottom: 0;
+  margin-top: 4rem; /* Space for fixed header */
 }

@@ -5,7 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import styles from "./AuthButtons.module.css";
 
 export const AuthButtons = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
 
   if (loading) {
     return <div className={styles.authButtons}>Loading...</div>;
@@ -17,6 +17,9 @@ export const AuthButtons = () => {
         <Link href="/dashboard" className={styles.dashboardButton}>
           Dashboard
         </Link>
+        <button onClick={logout} className={styles.logoutButton}>
+          Logout
+        </button>
       </div>
     );
   }

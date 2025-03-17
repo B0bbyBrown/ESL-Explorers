@@ -1,0 +1,189 @@
+.aboutUs {
+  padding: 4rem 2rem;
+  background: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 2rem;
+}
+
+.description {
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+
+.description p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.aboutBtn {
+  padding: 0.75rem 2rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.aboutBtn:hover {
+  background: #444;
+}
+
+.tagline {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  margin: 3rem 0;
+  font-style: italic;
+}
+
+.infoSections {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.mission,
+.vision,
+.team {
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.vision {
+  background: #e8f4ff;
+  border: 1px solid #b3d4ff;
+}
+
+.mission h2,
+.vision h2,
+.team h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 1rem;
+}
+
+.mission p,
+.vision p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teamMember {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberImage {
+  width: 160px;
+  height: 160px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 1rem;
+}
+
+.teamMember h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.memberRole {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.125rem;
+}
+
+.memberTitle {
+  color: #888;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.teamMember p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.cta {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 8px;
+  margin-top: 4rem;
+}
+
+.cta h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 1.5rem;
+}
+
+.registerBtn {
+  padding: 0.75rem 2rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.registerBtn:hover {
+  background: #444;
+}
+
+@media (max-width: 1024px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+
+  .memberImage {
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./HeroSection.module.css";
 
@@ -12,20 +11,23 @@ export const HeroSection = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
-        <h1>Welcome to ESL Explorers</h1>
-        <p>Enhance your English skills with interactive lessons.</p>
+        <h1 className={styles.title}>Start your learning journey today!</h1>
+        <p className={styles.subtitle}>
+          We&apos;re so happy you&apos;re here! However, you will need to
+          register to get started.
+        </p>
         <div className={styles.buttonGroup}>
           <button
             onClick={() => handlePlatformSelect("student")}
             className={styles.button}
           >
-            Student Registration
+            Register Student
           </button>
           <button
             onClick={() => handlePlatformSelect("teacher")}
             className={styles.button}
           >
-            Teacher Registration
+            Register Teacher
           </button>
         </div>
       </div>

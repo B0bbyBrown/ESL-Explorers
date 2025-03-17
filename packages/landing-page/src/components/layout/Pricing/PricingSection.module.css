@@ -1,0 +1,104 @@
+.pricing {
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #718096;
+  margin-bottom: 3rem;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricingCard {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pricingCard:hover {
+  transform: translateY(-4px);
+}
+
+.tierName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.priceContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.period {
+  font-size: 1rem;
+  color: #718096;
+  margin-left: 0.25rem;
+}
+
+.description {
+  color: #718096;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.getStarted {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.getStarted:hover {
+  background-color: #357abd;
+}
+
+@media (max-width: 768px) {
+  .pricing {
+    padding: 3rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}

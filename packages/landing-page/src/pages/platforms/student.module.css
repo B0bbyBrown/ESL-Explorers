@@ -1,0 +1,300 @@
+.main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.heroContent h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.heroContent p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.primaryButton {
+  padding: 0.875rem 2rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: #444;
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #e0e0e0;
+  border-radius: 8px;
+}
+
+/* Characters Section */
+.characters {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.characterText {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.characterGrid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.characterCircle {
+  width: 80px;
+  height: 80px;
+  background: #e0e0e0;
+  border-radius: 50%;
+}
+
+/* Planets Carousel Section */
+.planets {
+  margin-bottom: 4rem;
+  perspective: 2000px;
+}
+
+.planets h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.carouselContainer {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  transform-style: preserve-3d;
+}
+
+.carouselTrack {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carouselSlide {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% -300px; /* Adjust this value to control the radius of rotation */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.planetCircle {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff 0%,
+    #e0e0e0 30%,
+    #b0b0b0 60%,
+    #909090 100%
+  );
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.5),
+    8px 8px 16px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.planetCircle::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 30%;
+  height: 30%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 50%;
+  filter: blur(5px);
+}
+
+.planetCircle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.planetName {
+  font-size: 1.1rem;
+  color: #333;
+  text-align: center;
+  margin-top: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+}
+
+.carouselButton {
+  position: absolute;
+  background: #333;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.prevButton {
+  left: 20%;
+}
+
+.nextButton {
+  right: 20%;
+}
+
+.carouselButton:hover {
+  background: #444;
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.cta h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.registerButton {
+  padding: 1rem 3rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.registerButton:hover {
+  background: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .heroContent {
+    text-align: center;
+  }
+
+  .characterGrid {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .characterCircle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .planetCircle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cta {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 1rem;
+  }
+
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+
+  .planetCircle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .carouselButton {
+    width: 32px;
+    height: 32px;
+  }
+}

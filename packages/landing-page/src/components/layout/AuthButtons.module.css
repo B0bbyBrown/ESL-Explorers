@@ -6,7 +6,8 @@
 
 .registerButton,
 .loginButton,
-.dashboardButton {
+.dashboardButton,
+.logoutButton {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   text-decoration: none;
@@ -40,4 +41,16 @@
 
 .dashboardButton:hover {
   background: #0066d6;
+}
+
+.logoutButton {
+  background: transparent;
+  color: #dc2626;
+  border: 1px solid #dc2626;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background: #dc2626;
+  color: white;
 }

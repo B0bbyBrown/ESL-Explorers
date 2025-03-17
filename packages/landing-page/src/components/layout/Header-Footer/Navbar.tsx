@@ -14,7 +14,7 @@ export const Navbar = () => {
     <nav className={styles.desktopNav}>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger className={styles.navLink}>
-          Platforms <ChevronDown className={styles.dropdownIcon} size={14} />
+          Platforms <ChevronDown className={styles.dropdownIcon} />
         </DropdownMenuTrigger>
         <DropdownMenuPortal>
           <DropdownMenuContent
