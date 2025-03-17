@@ -1,3 +1,7 @@
+@import "./variables.css";
+
+/* Add any other global styles here */
+
 html,
 body {
   height: 100%;

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import styles from "../../styles/Auth.module.css";
+import styles from "@/styles/Auth.module.css";
 
 export default function RegisterPage() {
   const router = useRouter();

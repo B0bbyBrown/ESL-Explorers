@@ -143,6 +143,10 @@ const nextConfig = {
   transpilePackages: ["global-comps"],
   webpack: (config) => {
     config.resolve.extensions.push(".ts", ".tsx");
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": require("path").resolve(__dirname, "src"),
+    };
     return config;
   },
 };
