@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
 import styles from "./AuthButtons.module.css";
 
+// AuthButtons component for handling authentication state and navigation
 export const AuthButtons = () => {
   const { user, loading, logout } = useAuth();
 
