@@ -1,0 +1,17 @@
+[33mcommit 39565d390879e72ca05f42d4a2577e6e67df7894[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: B0bbyBrown <6obbybrown@gmail.com>
+Date:   Mon Mar 17 21:33:25 2025 +0200
+
+    Fix next.config.js to properly handle path aliases and headers
+
+[33mcommit dbf629df69a1c0ecefda87479a6609820068d08e[m
+Author: B0bbyBrown <6obbybrown@gmail.com>
+Date:   Mon Mar 17 21:28:29 2025 +0200
+
+    ok
+
+[33mcommit 5a558daf8766b99e774f2918443cffc6ebd2c98f[m
+Author: B0bbyBrown <6obbybrown@gmail.com>
+Date:   Mon Mar 17 21:25:38 2025 +0200
+
+    build success
