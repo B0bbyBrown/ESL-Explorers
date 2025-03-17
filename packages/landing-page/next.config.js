@@ -149,29 +149,19 @@ const nextConfig = {
     };
     return config;
   },
+  headers: async () => {
+    return [
+      {
+        source: "/admin(.*)",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
-
-module.exports = {
-  headers: function () {
-    return __awaiter(this, void 0, void 0, function () {
-      return __generator(this, function (_a) {
-        return [
-          2 /*return*/,
-          [
-            {
-              source: "/admin(.*)",
-              headers: [
-                {
-                  key: "X-Robots-Tag",
-                  value: "noindex, nofollow",
-                },
-              ],
-            },
-          ],
-        ];
-      });
-    });
-  },
-};
