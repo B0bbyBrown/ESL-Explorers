@@ -1,6 +1,6 @@
 import styles from "./Styles/contact.module.css";
 
-const Contact = () => {
+export const Contact = () => {
   return (
     <>
       <div className={styles.contactContainer}>
@@ -13,5 +13,3 @@ const Contact = () => {
     </>
   );
 };
-
-export { Contact };
