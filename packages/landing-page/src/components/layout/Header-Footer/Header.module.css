@@ -1,0 +1,217 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 100;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.logoWrapper {
+  padding: 0.5rem 1rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.authButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.registerButton,
+.loginButton {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.registerButton {
+  background: #333;
+  color: white;
+}
+
+.loginButton {
+  background: transparent;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* Desktop Navigation
+.desktopNav {
+  display: none;
+}
+
+.navLink:hover {
+  color: #333;
+}
+
+.dropdownIcon {
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+.dropdownLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+} */
+
+/* Desktop Auth Buttons */
+.desktopAuthButtons {
+  display: none;
+}
+
+.signupButton {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+Mobile Menu Button .mobileMenuButton {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 1.5rem;
+}
+
+.mobileNavLink {
+  padding: 0.75rem 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileDropdownIcon {
+  transition: transform 0.2s ease;
+}
+
+.rotateIcon {
+  transform: rotate(180deg);
+}
+
+.mobileServicesDropdown {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mobileDropdownContent {
+  padding-left: 1rem;
+}
+
+.mobileDropdownItem {
+  display: block;
+  padding: 0.75rem 0;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.mobileNavLink:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+.mobileAuthButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.mobileLoginButton {
+  padding: 0.75rem 0;
+  text-align: center;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.mobileSignupButton {
+  padding: 0.75rem 0;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .mobileMenuButton {
+    display: none;
+  }
+
+  .desktopNav {
+    display: flex;
+    align-items: center;
+  }
+
+  .desktopAuthButtons {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,56 @@
+/* Hero Section */
+.hero {
+  background: #f5f5f5;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px red solid;
+}
+
+.heroContent {
+  max-width: 1200px;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  max-width: 500px;
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 400px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+}
+
+.primaryButton {
+  background: #333;
+  color: white;
+}
+
+.secondaryButton {
+  background: transparent;
+  color: #333;
+  border: 1px solid #333;
+}

@@ -1,0 +1,43 @@
+.authButtons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.registerButton,
+.loginButton,
+.dashboardButton {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.registerButton {
+  background: #333;
+  color: white;
+}
+
+.registerButton:hover {
+  background: #444;
+}
+
+.loginButton {
+  background: transparent;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.loginButton:hover {
+  border-color: #333;
+}
+
+.dashboardButton {
+  background: #007aff;
+  color: white;
+}
+
+.dashboardButton:hover {
+  background: #0066d6;
+}

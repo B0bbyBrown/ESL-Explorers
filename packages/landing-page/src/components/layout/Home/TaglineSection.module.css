@@ -1,0 +1,19 @@
+.tagline {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #fff;
+}
+
+.taglineText {
+  font-size: 2rem;
+  font-weight: 600;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .taglineText {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,29 @@
+.howWeTeach {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #f5f5f5;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.sectionDescription {
+  font-size: 1rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+@media (max-width: 768px) {
+  .howWeTeach {
+    padding: 2rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}
