@@ -1,65 +1,79 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { User, Session, AuthChangeEvent } from "@supabase/supabase-js";
-import { supabase } from "@/utils/supabaseClient";
+import { createContext, useContext, useEffect, useState } from "react";
+import { User } from "@supabase/supabase-js";
+import { supabase } from "global-comps/src/utils/supabaseClient";
 
-type AuthContextType = {
+interface AuthContextType {
   user: User | null;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
-};
+  userRole: "student" | "teacher" | null;
+}
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState<"student" | "teacher" | null>(null);
 
   useEffect(() => {
-    // Check active sessions and sets the user
-    supabase.auth
-      .getSession()
-      .then(({ data: { session } }: { data: { session: Session | null } }) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
-      });
+    // Check active session
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
 
-    // Listen for changes on auth state
+      if (session?.user) {
+        // Fetch user role from database
+        const { data: userData } = await supabase
+          .from("users")
+          .select("role")
+          .eq("id", session.user.id)
+          .single();
+
+        setUserRole(userData?.role ?? null);
+      }
+
+      setLoading(false);
+    };
+
+    checkSession();
+
+    // Set up auth state listener
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(
-      (event: AuthChangeEvent, session: Session | null) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
-      }
-    );
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      setUser(session?.user ?? null);
 
-    return () => subscription.unsubscribe();
+      if (session?.user) {
+        const { data: userData } = await supabase
+          .from("users")
+          .select("role")
+          .eq("id", session.user.id)
+          .single();
+
+        setUserRole(userData?.role ?? null);
+      } else {
+        setUserRole(null);
+      }
+
+      setLoading(false);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-  const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (error) throw error;
-  };
-
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
-  };
-
-  const value = {
-    user,
-    loading,
-    signIn,
-    signOut,
+    await supabase.auth.signOut();
+    window.location.href = "/";
   };
 
   return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
+    <AuthContext.Provider value={{ user, loading, signOut, userRole }}>
+      {children}
     </AuthContext.Provider>
   );
 };

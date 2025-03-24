@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "@/styles/Auth.module.css";
 
-export default function RegisterPage() {
+export const RegisterPage = () => {
   const router = useRouter();
 
   const handlePlatformSelect = (platform: "student" | "teacher") => {
-    router.push(`/register/${platform}`);
+    router.push(`/Auth/register/${platform}`);
   };
 
   return (
@@ -20,23 +20,25 @@ export default function RegisterPage() {
             onClick={() => handlePlatformSelect("student")}
             className={styles.button}
           >
-            Student Account
+            Register as Student
           </button>
           <button
             onClick={() => handlePlatformSelect("teacher")}
             className={styles.button}
           >
-            Teacher Account
+            Register as Teacher
           </button>
         </div>
 
         <p className={styles.registerLink}>
           Already have an account?{" "}
-          <Link href="/login" className={styles.link}>
+          <Link href="/Auth/login" className={styles.link}>
             Login here
           </Link>
         </p>
       </div>
     </div>
   );
-}
+};
+
+export default RegisterPage;

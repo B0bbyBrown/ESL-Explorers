@@ -4,21 +4,29 @@ import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
 import styles from "./AuthButtons.module.css";
 
+interface AuthButtonsProps {
+  className?: string;
+}
+
 // AuthButtons component for handling authentication state and navigation
-export const AuthButtons = () => {
-  const { user, loading, logout } = useAuth();
+export const AuthButtons = ({ className }: AuthButtonsProps) => {
+  const { user, loading, signOut } = useAuth();
 
   if (loading) {
-    return <div className={styles.authButtons}>Loading...</div>;
+    return (
+      <div className={`${styles.authButtons} ${className || ""}`}>
+        Loading...
+      </div>
+    );
   }
 
   if (user) {
     return (
-      <div className={styles.authButtons}>
+      <div className={`${styles.authButtons} ${className || ""}`}>
         <Link href="/dashboard" className={styles.dashboardButton}>
           Dashboard
         </Link>
-        <button onClick={logout} className={styles.logoutButton}>
+        <button onClick={signOut} className={styles.logoutButton}>
           Logout
         </button>
       </div>
@@ -26,11 +34,11 @@ export const AuthButtons = () => {
   }
 
   return (
-    <div className={styles.authButtons}>
-      <Link href="/register" className={styles.registerButton}>
+    <div className={`${styles.authButtons} ${className || ""}`}>
+      <Link href="/Auth/register" className={styles.registerButton}>
         Register
       </Link>
-      <Link href="/login" className={styles.loginButton}>
+      <Link href="/Auth/login" className={styles.loginButton}>
         Login
       </Link>
     </div>

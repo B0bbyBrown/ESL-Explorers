@@ -3,16 +3,15 @@
   top: 0;
   left: 0;
   right: 0;
-  background: white;
+  background: var(--background-color);
   z-index: 100;
   padding: 1rem 0;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid var(--border-color);
+  height: var(--header-height);
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  composes: container from global; /* Reuse the global container class */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,10 +20,10 @@
 .logo {
   text-decoration: none;
   padding: 0.5rem 1rem;
-  background: #f0f0f0;
+  background: var(--accent-color);
   border-radius: 2rem;
   font-weight: 500;
-  color: #333;
+  color: var(--primary-color);
 }
 
 .nav {
@@ -35,13 +34,13 @@
 
 .navLink {
   text-decoration: none;
-  color: #666;
+  color: var(--muted-color);
   font-size: 0.9rem;
   transition: color 0.2s ease;
 }
 
 .navLink:hover {
-  color: #333;
+  color: var(--primary-color);
 }
 
 .authButtons {
@@ -59,19 +58,19 @@
 }
 
 .registerButton {
-  background: #333;
-  color: white;
+  background: var(--primary-color);
+  color: var(--primary-foreground-color);
   border: none;
 }
 
 .registerButton:hover {
-  background: #444;
+  background: var(--primary-hover-color);
 }
 
 .loginButton {
   background: transparent;
-  color: #666;
-  border: 1px solid #ddd;
+  color: var(--muted-color);
+  border: 1px solid var(--border-color);
 }
 
 .loginButton:hover {
@@ -116,12 +115,20 @@
   text-decoration: none;
 }
 
-Mobile Menu Button .mobileMenuButton {
+/* Mobile Components */
+.mobileMenuButton {
   display: block;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: var(--spacing-sm);
+}
+
+/* Group related styles */
+.mobileNav,
+.mobileAuthButtons {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Mobile Menu */
@@ -130,9 +137,9 @@ Mobile Menu Button .mobileMenuButton {
   top: 100%;
   left: 0;
   right: 0;
-  background-color: white;
-  border-bottom: 1px solid #eaeaea;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--sheet-shadow);
 }
 
 .mobileNav {

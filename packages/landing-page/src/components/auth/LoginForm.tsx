@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { supabase } from "global-comps/src/utils/supabaseClient";
 import styles from "./Styles/AuthForm.module.css";
+import Link from "next/link";
 
-export const LoginForm = ({
-  platform,
-}: {
+interface LoginFormProps {
   platform: "student" | "teacher";
-}) => {
+}
+
+export const LoginForm = ({ platform }: LoginFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,7 +19,7 @@ export const LoginForm = ({
     setLoading(true);
 
     try {
-      // 1. Sign in
+      // 1. Sign in attempt
       const { data, error: signInError } =
         await supabase.auth.signInWithPassword({
           email,
@@ -27,21 +28,26 @@ export const LoginForm = ({
 
       if (signInError) throw signInError;
 
-      // 2. Verify user role
+      // 2. Check user role and approval status
       const { data: userData, error: userError } = await supabase
         .from("users")
-        .select("role")
+        .select("role, approved")
         .eq("id", data.user?.id)
         .single();
 
       if (userError || !userData) {
-        throw new Error("Error retrieving user role");
+        throw new Error("Error retrieving user information");
       }
 
       if (userData.role !== platform) {
         throw new Error(
-          `Account is registered as a ${userData.role}, not a ${platform}`
+          `This account is registered as a ${userData.role}, not a ${platform}`
         );
+      }
+
+      // Check approval status for teachers
+      if (platform === "teacher" && !userData.approved) {
+        throw new Error("Your teacher account is pending approval");
       }
 
       // 3. Update session metadata
@@ -61,35 +67,49 @@ export const LoginForm = ({
       setError(
         error instanceof Error ? error.message : "An unexpected error occurred"
       );
-      await supabase.auth.signOut();
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className={styles.formContainer}>
-      <h2>{platform.charAt(0).toUpperCase() + platform.slice(1)} Login</h2>
-      <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className={styles.authForm}>
+      {error && <div className={styles.error}>{error}</div>}
+
+      <div className={styles.formGroup}>
+        <label htmlFor="email">Email</label>
         <input
+          id="email"
           type="email"
-          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          disabled={loading}
         />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="password">Password</label>
         <input
+          id="password"
           type="password"
-          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          disabled={loading}
         />
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
-      {error && <p className={styles.error}>{error}</p>}
-    </div>
+      </div>
+
+      <button type="submit" disabled={loading} className={styles.submitButton}>
+        {loading ? "Logging in..." : "Login"}
+      </button>
+
+      <div className={styles.links}>
+        <Link href={`/auth/register/${platform}`}>
+          Don&apos;t have an account? Register here
+        </Link>
+        <Link href="/auth/forgot-password">Forgot Password?</Link>
+      </div>
+    </form>
   );
 };

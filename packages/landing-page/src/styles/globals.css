@@ -11,6 +11,15 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+/* Add a reusable container class */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+  box-sizing: border-box;
+}
+
 #__next {
   min-height: 100vh;
   display: flex;
@@ -25,5 +34,111 @@ body {
 
 .content {
   flex: 1;
-  margin-top: 4rem; /* Space for fixed header */
+  margin-top: var(--header-height); /* Space for fixed header */
+}
+
+.transition-standard {
+  transition: all var(--transition-speed) var(--transition-timing);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Improve focus styles */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring-color);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+.focus-ring {
+  outline: none;
+  ring: 2px var(--ring-color);
+  ring-offset: 2px var(--ring-offset-color);
+}
+
+/* Add more specific transition utilities */
+.transition-transform {
+  transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.transition-colors {
+  transition: background-color var(--transition-speed) var(--transition-timing),
+    border-color var(--transition-speed) var(--transition-timing),
+    color var(--transition-speed) var(--transition-timing);
+}
+
+.transition-opacity {
+  transition: opacity var(--transition-speed) var(--transition-timing);
+}
+
+/* Add reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Add screen reader utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+:root {
+  --background-color: #ffffff;
+  --foreground-color: #1f2937;
+  --border-color: #e5e7eb;
+  --primary-color: #0070f3;
+  --primary-hover-color: #0051b3;
+  --muted-color: #6b7280;
+  --ring-color: rgba(0, 112, 243, 0.2);
+  --ring-offset-color: #ffffff;
+}
+
+/* Dark mode variables if needed */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1f2937;
+    --foreground-color: #f9fafb;
+    --border-color: #374151;
+    --primary-color: #3b82f6;
+    --primary-hover-color: #2563eb;
+    --muted-color: #9ca3af;
+    --ring-color: rgba(59, 130, 246, 0.2);
+    --ring-offset-color: #1f2937;
+  }
 }

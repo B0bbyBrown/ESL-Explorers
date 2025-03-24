@@ -1,0 +1,128 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { supabase } from "global-comps/src/utils/supabaseClient";
+import { FormInput } from "../shared/FormInput";
+import { UserPlatform, AuthFormData } from "@/components/auth/types/auth.types";
+import { validateRegistration } from "@/components/auth/utils/authValidation";
+import styles from "@/styles/Auth.module.css";
+
+interface RegistrationFormProps {
+  platform: UserPlatform;
+}
+
+export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
+  const router = useRouter();
+  const [formData, setFormData] = useState<AuthFormData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    // Validate form data
+    const validationError = validateRegistration(formData);
+    if (validationError) {
+      setError(validationError);
+      setLoading(false);
+      return;
+    }
+
+    try {
+      // Registration logic here...
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : "An unexpected error occurred"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className={styles.form}>
+      {error && <div className={styles.error}>{error}</div>}
+
+      <FormInput
+        id="firstName"
+        name="firstName"
+        type="text"
+        label="First Name"
+        value={formData.firstName || ""}
+        onChange={handleChange}
+        required
+        disabled={loading}
+      />
+
+      <FormInput
+        id="lastName"
+        name="lastName"
+        type="text"
+        label="Last Name"
+        value={formData.lastName || ""}
+        onChange={handleChange}
+        required
+        disabled={loading}
+      />
+
+      <FormInput
+        id="email"
+        name="email"
+        type="email"
+        label="Email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+        disabled={loading}
+      />
+
+      <FormInput
+        id="password"
+        name="password"
+        type="password"
+        label="Password"
+        value={formData.password}
+        onChange={handleChange}
+        required
+        disabled={loading}
+      />
+
+      <FormInput
+        id="confirmPassword"
+        name="confirmPassword"
+        type="password"
+        label="Confirm Password"
+        value={formData.confirmPassword || ""}
+        onChange={handleChange}
+        required
+        disabled={loading}
+      />
+
+      <button type="submit" className={styles.button} disabled={loading}>
+        {loading ? "Creating Account..." : "Create Account"}
+      </button>
+
+      <p className={styles.loginLink}>
+        Already have an account?{" "}
+        <Link href="/auth/login" className={styles.link}>
+          Login here
+        </Link>
+      </p>
+    </form>
+  );
+};

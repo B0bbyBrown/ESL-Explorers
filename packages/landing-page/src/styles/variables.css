@@ -1,63 +1,26 @@
 :root {
+  /* Colors */
   --background-color: #ffffff;
   --foreground-color: #1a1a1a;
-  --muted-color: #94a3b8;
-  --muted-foreground-color: #64748b;
-  --border-color: #e2e8f0;
-  --input-border-color: #e2e8f0;
-  --ring-color: #2563eb;
-  --ring-offset-color: #ffffff;
-  --primary-color: #2563eb;
-  --primary-foreground-color: #ffffff;
-  --secondary-color: #64748b;
-  --secondary-foreground-color: #0f172a;
-  --accent-color: #f1f5f9;
-  --accent-foreground-color: #0f172a;
-  --destructive-color: #ef4444;
-  --destructive-foreground-color: #ffffff;
-  --popover-color: #ffffff;
-  --popover-foreground-color: #020817;
-  --primary-hover-color: #1d4ed8;
-  --secondary-hover-color: #475569;
-  --accent-hover-color: #e2e8f0;
-  --muted-hover-color: #64748b;
-  --input-focus-border-color: #2563eb;
-  --input-focus-ring-color: rgba(37, 99, 235, 0.1);
-  --hover-color: #f1f5f9;
-  --sidebar-width: 16rem;
-  --sidebar-width-icon: 3rem;
-  --sidebar-width-mobile: 18rem;
-  --destructive-hover-color: #dc2626;
-  --sheet-background: #ffffff;
-  --sheet-border-color: #e2e8f0;
-  --sheet-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
+  --primary-color: #333;
+  --muted-color: #666;
+  --border-color: #eaeaea;
 
-[data-theme="dark"] {
-  --background-color: #1a1a1a;
-  --foreground-color: #ffffff;
-  --muted-color: #64748b;
-  --muted-foreground-color: #94a3b8;
-  --border-color: #1e293b;
-  --input-border-color: #1e293b;
-  --ring-color: #3b82f6;
-  --ring-offset-color: #1a1a1a;
-  --ring-color: #0ea5e9;
-  --ring-offset-color: #020817;
-  --primary-color: #0ea5e9;
-  --primary-foreground-color: #ffffff;
-  --secondary-color: #1e293b;
-  --secondary-foreground-color: #ffffff;
-  --accent-color: #1e293b;
-  --accent-foreground-color: #ffffff;
-  --destructive-color: #7f1d1d;
-  --destructive-foreground-color: #ffffff;
-  --popover-color: #020817;
-  --popover-foreground-color: #ffffff;
-  --destructive-hover-color: #991b1b;
-  --sheet-background: #1a1a1a;
-  --sheet-border-color: #1e293b;
-  --sheet-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
-    0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  /* Spacing */
+  --container-width: 1400px;
+  --container-padding: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
 }
