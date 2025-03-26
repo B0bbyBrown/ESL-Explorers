@@ -9,37 +9,14 @@ interface AuthButtonsProps {
 }
 
 // AuthButtons component for handling authentication state and navigation
-export const AuthButtons = ({ className }: AuthButtonsProps) => {
-  const { user, loading, signOut } = useAuth();
-
-  if (loading) {
-    return (
-      <div className={`${styles.authButtons} ${className || ""}`}>
-        Loading...
-      </div>
-    );
-  }
-
-  if (user) {
-    return (
-      <div className={`${styles.authButtons} ${className || ""}`}>
-        <Link href="/dashboard" className={styles.dashboardButton}>
-          Dashboard
-        </Link>
-        <button onClick={signOut} className={styles.logoutButton}>
-          Logout
-        </button>
-      </div>
-    );
-  }
-
+export const AuthButtons = () => {
   return (
-    <div className={`${styles.authButtons} ${className || ""}`}>
-      <Link href="/Auth/register" className={styles.registerButton}>
-        Register
-      </Link>
-      <Link href="/Auth/login" className={styles.loginButton}>
+    <div className={styles.authButtons}>
+      <Link href="/login" className={styles.loginButton}>
         Login
+      </Link>
+      <Link href="/register" className={styles.registerButton}>
+        Get Started
       </Link>
     </div>
   );
