@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import styles from "@/components/layout/AuthButtons.module.css";
+import styles from "./AuthButtons.module.css";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const AuthButtonsContent = () => {
