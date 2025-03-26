@@ -1,7 +1,7 @@
 .footer {
-  background: #f8f8f8;
+  background: var(--theme-foreground);
   padding: 4rem 2rem 1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .footerContent {
@@ -31,25 +31,25 @@
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .column a {
   text-decoration: none;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   transition: color 0.2s ease;
 }
 
 .column a:hover {
-  color: #333;
+  color: var(--text-secondary);
 }
 
 .bottomBar {
   max-width: 1200px;
   margin: 3rem auto 0;
   padding-top: 1.5rem;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid var(--card-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +58,7 @@
 }
 
 .bottomBar p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   margin: 0;
 }

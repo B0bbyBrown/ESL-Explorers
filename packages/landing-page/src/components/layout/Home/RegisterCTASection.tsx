@@ -1,14 +1,21 @@
 import styles from "./RegisterCTASection.module.css";
+import Link from "next/link";
 
 export const RegisterCTASection = () => {
   return (
     <section className={styles.registerCta}>
-      <h2 className={styles.ctaText}>
-        Register today to start your learning journey!
-      </h2>
-      <button className={styles.registerButton}>Register</button>
+      <div className={styles.registerCtaContent}>
+        <h2 className={styles.registerCtaTitle}>
+          Ready to Start Your English Learning Journey?
+        </h2>
+        <p className={styles.registerCtaSubtitle}>
+          Join our community of learners and get access to all our premium
+          features.
+        </p>
+        <Link href="/register" className={styles.registerCtaButton}>
+          Create Your Account
+        </Link>
+      </div>
     </section>
   );
 };
-
-export default RegisterCTASection;

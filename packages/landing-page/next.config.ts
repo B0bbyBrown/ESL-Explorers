@@ -1,14 +1,12 @@
 import type { NextConfig } from "next";
 
-const config: NextConfig = {
+const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
+  images: {
+    unoptimized: process.env.NODE_ENV === "development",
+  },
   // Add other configuration options here
-};
-
-export default config;
-
-module.exports = {
   async headers() {
     return [
       {
@@ -23,3 +21,5 @@ module.exports = {
     ];
   },
 };
+
+export default nextConfig;

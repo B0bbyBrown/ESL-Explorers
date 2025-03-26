@@ -1,5 +1,5 @@
-import { AuthContainer } from "@/components/auth/layout/AuthContainer";
-import { RegistrationForm } from "@/components/auth/forms/RegistrationForm";
+import { AuthContainer } from "@/components/auth/layout";
+import { RegistrationForm } from "@/components/auth/forms";
 
 export const StudentRegistrationPage = () => {
   return (

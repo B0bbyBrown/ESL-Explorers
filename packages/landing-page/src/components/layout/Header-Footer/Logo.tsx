@@ -1,11 +1,28 @@
-import { useRouter } from "next/router";
+import { Image } from "@/components/common/Image";
+import logoImage from "@/assets/logo/logo.png"; // Direct import
+import styles from "./Logo.module.css";
+import Link from "next/link";
 
-export default function Logo() {
-  const router = useRouter();
+export const Logo = () => {
+  // Calculate a more reasonable size while maintaining aspect ratio
+  const aspectRatio = 14286 / 4086; // Original width / height
+  const height = 60; // Desired height
+  const width = Math.round(height * aspectRatio); // Maintain aspect ratio
 
   return (
-    <div className="logo" onClick={() => router.push("/")}>
-      ESL Explorers
-    </div>
+    <Link href="/" className={styles.logoLink}>
+      <div className={styles.logoContainer}>
+        <Image
+          src={logoImage} // Use the imported image
+          alt="ESL Explorers"
+          width={width}
+          height={height}
+          priority
+          className={styles.logoImage}
+        />
+      </div>
+    </Link>
   );
-}
+};
+
+export default Logo;

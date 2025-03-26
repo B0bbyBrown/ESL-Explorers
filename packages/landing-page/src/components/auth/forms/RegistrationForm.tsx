@@ -1,18 +1,17 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { supabase } from "global-comps/src/utils/supabaseClient";
 import { FormInput } from "../shared/FormInput";
-import { UserPlatform, AuthFormData } from "@/components/auth/types/auth.types";
-import { validateRegistration } from "@/components/auth/utils/authValidation";
-import styles from "@/styles/Auth.module.css";
+import { UserPlatform, AuthFormData } from "../types/auth.types";
+import { validateRegistration } from "../utils/authValidation";
+import styles from "../styles/RegistrationForm.module.css";
+import sharedStyles from "../styles/shared.module.css";
 
 interface RegistrationFormProps {
   platform: UserPlatform;
 }
 
 export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
-  const router = useRouter();
   const [formData, setFormData] = useState<AuthFormData>({
     firstName: "",
     lastName: "",
@@ -56,7 +55,7 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      {error && <div className={styles.error}>{error}</div>}
+      {error && <div className={sharedStyles.error}>{error}</div>}
 
       <FormInput
         id="firstName"
@@ -113,16 +112,15 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
         disabled={loading}
       />
 
-      <button type="submit" className={styles.button} disabled={loading}>
+      <button type="submit" className={sharedStyles.button} disabled={loading}>
         {loading ? "Creating Account..." : "Create Account"}
       </button>
 
-      <p className={styles.loginLink}>
-        Already have an account?{" "}
-        <Link href="/auth/login" className={styles.link}>
-          Login here
+      <div className={styles.links}>
+        <Link href="/auth/login" className={sharedStyles.link}>
+          Already have an account? Login here
         </Link>
-      </p>
+      </div>
     </form>
   );
 };

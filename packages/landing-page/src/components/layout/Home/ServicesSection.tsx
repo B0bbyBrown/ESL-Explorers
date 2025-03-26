@@ -1,82 +1,51 @@
 import styles from "./ServicesSection.module.css";
 
 export const ServicesSection = () => {
+  const services = [
+    {
+      title: "Student Portal",
+      description:
+        "Our lessons make learning feel like an exciting adventure, where young learners can explore and grow. Each lesson keeps students feeling they're in class.",
+      icon: "🎓",
+    },
+    {
+      title: "Teacher Resources",
+      description:
+        "Access a comprehensive library of teaching materials, lesson plans, and interactive activities designed to make your ESL classes more engaging and effective.",
+      icon: "📚",
+    },
+    {
+      title: "Interactive Learning",
+      description:
+        "Engage students with our interactive games and exploration features that make learning English fun while building confidence.",
+      icon: "🎮",
+    },
+    {
+      title: "Progress Tracking",
+      description:
+        "Monitor student progress with detailed analytics and personalized learning paths that adapt to each student's needs.",
+      icon: "📊",
+    },
+  ];
+
   return (
     <section className={styles.services}>
-      <h2 className={styles.title}>Our Services</h2>
+      <div className={styles.content}>
+        <h2 className={styles.title}>Our Services</h2>
+        <p className={styles.subtitle}>
+          Discover how we make learning English an exciting journey for both
+          students and teachers
+        </p>
 
-      <div className={styles.servicesList}>
-        <div className={styles.serviceItem}>
-          <div className={styles.serviceContent}>
-            <h3 className={styles.serviceTitle}>Our Student Portal</h3>
-            <p className={styles.serviceDescription}>
-              Our lessons make learning feel like an exciting adventure, where
-              young learners can explore and grow. Each lesson keeps students
-              feeling they&apos;re in class. With our games and interactive
-              exploration features, each lesson immerses students in fun while
-              helping them gain confidence. Our platform creates a safe,
-              inclusive, informal in-a-feel environment for everyday use.
-            </p>
-            <button className={styles.learnMore}>Learn More</button>
-          </div>
-          <div className={styles.circleGrid}>
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className={styles.circle}>
-                <div className={styles.circleInner} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.serviceItem}>
-          <div className={styles.stackedPapers}>
-            <div className={styles.paper}>
-              <div className={styles.paperHeader}>
-                <div className={styles.paperTitle} />
-                <div className={styles.paperSubtitle} />
-              </div>
-              <div className={styles.paperContent}>
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className={styles.paperLine} />
-                ))}
-              </div>
+        <div className={styles.servicesGrid}>
+          {services.map((service, index) => (
+            <div key={index} className={styles.serviceCard}>
+              <div className={styles.serviceIcon}>{service.icon}</div>
+              <h3 className={styles.serviceTitle}>{service.title}</h3>
+              <p className={styles.serviceDescription}>{service.description}</p>
+              <button className={styles.learnMore}>Learn More</button>
             </div>
-            <div className={styles.paper}>
-              <div className={styles.paperHeader}>
-                <div className={styles.paperTitle} />
-                <div className={styles.paperSubtitle} />
-              </div>
-              <div className={styles.paperContent}>
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className={styles.paperLine} />
-                ))}
-              </div>
-            </div>
-            <div className={styles.paper}>
-              <div className={styles.paperHeader}>
-                <div className={styles.paperTitle} />
-                <div className={styles.paperSubtitle} />
-              </div>
-              <div className={styles.paperContent}>
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className={styles.paperLine} />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={styles.serviceContent}>
-            <h3 className={styles.serviceTitle}>Our Teacher Portal</h3>
-            <p className={styles.serviceDescription}>
-              We provide tools and resources that make &quot;in-culture
-              teaching&quot; effortless, allowing teachers to focus on
-              delivering the lesson while ensuring it&apos;s effectively
-              prepared. Our all-in-one subscription includes comprehensive
-              lesson plans, interactive materials, assessments, and visuals,
-              ensuring teachers have everything they need to offer high-quality
-              lessons for their students.
-            </p>
-            <button className={styles.learnMore}>Learn More</button>
-          </div>
+          ))}
         </div>
       </div>
     </section>

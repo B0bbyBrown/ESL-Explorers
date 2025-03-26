@@ -1,14 +1,14 @@
-import { RegistrationForm } from "@/components/auth/RegistrationForm";
-import styles from "@/styles/Auth.module.css";
+import { AuthContainer } from "@/components/auth/layout";
+import { RegistrationForm } from "@/components/auth/forms";
 
 export const TeacherRegistrationPage = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.formContainer}>
-        <h1 className={styles.title}>Teacher Registration</h1>
-        <RegistrationForm platform="teacher" />
-      </div>
-    </div>
+    <AuthContainer
+      title="Teacher Registration"
+      subtitle="Create your teacher account to get started"
+    >
+      <RegistrationForm platform="teacher" />
+    </AuthContainer>
   );
 };
 

@@ -1,0 +1,7 @@
+{
+  "name": "esl-explorers",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}

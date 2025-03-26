@@ -141,6 +141,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ["global-comps"],
+  images: {
+    unoptimized: process.env.NODE_ENV === "development",
+    disableStaticImages: false, // Enable static image imports
+  },
   webpack: (config) => {
     config.resolve.extensions.push(".ts", ".tsx");
     config.resolve.alias = {

@@ -1,11 +1,11 @@
 export type UserPlatform = "student" | "teacher";
 
 export interface AuthFormData {
+  firstName?: string;
+  lastName?: string;
   email: string;
   password: string;
   confirmPassword?: string;
-  firstName?: string;
-  lastName?: string;
 }
 
 export interface AuthError {
@@ -14,9 +14,9 @@ export interface AuthError {
 }
 
 export interface AuthContainerProps {
-  children: React.ReactNode;
   title: string;
   subtitle?: string;
+  children: React.ReactNode;
 }
 
 export interface FormInputProps {

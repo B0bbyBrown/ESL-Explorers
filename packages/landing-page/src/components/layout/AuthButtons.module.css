@@ -4,8 +4,25 @@
   align-items: center;
 }
 
-.registerButton,
-.loginButton,
+/* Remove duplicate button styles and extend from base */
+.actionButton {
+  composes: baseButton from "../../styles/base/auth.module.css";
+  font-size: 0.9rem;
+}
+
+.registerButton {
+  composes: actionButton;
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.loginButton {
+  composes: actionButton;
+  background-color: var(--primary-color);
+  color: white;
+}
+
 .dashboardButton,
 .logoutButton {
   padding: 0.5rem 1rem;
@@ -13,25 +30,6 @@
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.2s ease;
-}
-
-.registerButton {
-  background: #333;
-  color: white;
-}
-
-.registerButton:hover {
-  background: #444;
-}
-
-.loginButton {
-  background: transparent;
-  color: #333;
-  border: 1px solid #ddd;
-}
-
-.loginButton:hover {
-  border-color: #333;
 }
 
 .dashboardButton {
@@ -86,23 +84,4 @@
 .dropdownContent a:hover {
   background-color: #f1f1f1;
   border-radius: 4px;
-}
-
-.registerButton,
-.loginButton {
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.registerButton {
-  background-color: transparent;
-  border: 1px solid #0070f3;
-  color: #0070f3;
-}
-
-.loginButton {
-  background-color: #0070f3;
-  color: white;
 }

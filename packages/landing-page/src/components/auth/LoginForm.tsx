@@ -2,6 +2,8 @@ import { useState } from "react";
 import { supabase } from "global-comps/src/utils/supabaseClient";
 import styles from "./Styles/AuthForm.module.css";
 import Link from "next/link";
+import { Button } from "../ui/Button/Button";
+import { useRouter } from "next/router";
 
 interface LoginFormProps {
   platform: "student" | "teacher";
@@ -12,6 +14,7 @@ export const LoginForm = ({ platform }: LoginFormProps) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,14 +103,20 @@ export const LoginForm = ({ platform }: LoginFormProps) => {
         />
       </div>
 
-      <button type="submit" disabled={loading} className={styles.submitButton}>
-        {loading ? "Logging in..." : "Login"}
-      </button>
+      <Button
+        type="submit"
+        isLoading={loading}
+        size="lg"
+        className={styles.submitButton}
+      >
+        Login
+      </Button>
+
+      <Button variant="outline" onClick={() => router.push("/register")}>
+        Create Account
+      </Button>
 
       <div className={styles.links}>
-        <Link href={`/auth/register/${platform}`}>
-          Don&apos;t have an account? Register here
-        </Link>
         <Link href="/auth/forgot-password">Forgot Password?</Link>
       </div>
     </form>

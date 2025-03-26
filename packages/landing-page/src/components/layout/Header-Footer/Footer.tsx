@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "./Logo";
 import styles from "./Footer.module.css";
 
 export const Footer = () => {
@@ -7,12 +7,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.logoSection}>
-          <Image
-            src="/logo.png"
-            alt="ESL Explorers Logo"
-            width={80}
-            height={80}
-          />
+          <Logo />
         </div>
 
         <div className={styles.linksSection}>
