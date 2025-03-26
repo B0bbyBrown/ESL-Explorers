@@ -1,5 +1,5 @@
 import { AuthContainerProps } from "../types/auth.types";
-import styles from "../styles/AuthContainer.module.css";
+import layoutStyles from "../Styles/AuthContainer.module.css";
 
 export const AuthContainer = ({
   children,
@@ -7,10 +7,10 @@ export const AuthContainer = ({
   subtitle,
 }: AuthContainerProps) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.formContainer}>
-        <h1 className={styles.title}>{title}</h1>
-        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+    <div className={layoutStyles.container}>
+      <div className={layoutStyles.formContainer}>
+        <h1 className={layoutStyles.title}>{title}</h1>
+        {subtitle && <p className={layoutStyles.subtitle}>{subtitle}</p>}
         {children}
       </div>
     </div>

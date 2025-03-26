@@ -52,7 +52,15 @@
 /* Characters Section */
 .characters {
   text-align: center;
-  margin-bottom: 4rem;
+  margin: 4rem 0;
+  padding: 2rem;
+}
+
+.characterTitle {
+  font-size: var(--font-3xl);
+  font-weight: var(--font-bold);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
 }
 
 .characterText {
@@ -70,11 +78,63 @@
   margin-top: 2rem;
 }
 
+.characterCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-lg);
+  background: var(--theme-background);
+  border-radius: var(--radius-lg);
+  transition: transform 0.3s ease;
+}
+
+.characterCard:hover {
+  transform: translateY(-5px);
+}
+
 .characterCircle {
   width: 80px;
   height: 80px;
-  background: #e0e0e0;
   border-radius: 50%;
+  overflow: hidden;
+  background: #e0e0e0;
+}
+
+.characterImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-4xl);
+  font-weight: var(--font-bold);
+  color: var(--text-secondary);
+  background: linear-gradient(
+    45deg,
+    var(--theme-muted),
+    var(--theme-foreground)
+  );
+}
+
+.characterName {
+  font-size: var(--font-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-secondary);
+  margin: var(--spacing-sm) 0;
+}
+
+.characterRole {
+  font-size: var(--font-base);
+  color: var(--accent);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-medium);
+}
+
+.characterDescription {
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  text-align: center;
 }
 
 /* Planets Carousel Section */

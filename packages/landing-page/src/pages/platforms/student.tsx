@@ -1,5 +1,25 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "./student.module.css";
+
+const characters = [
+  {
+    name: "Professor",
+    imageUrl: "/images/characters/professor.png",
+  },
+  {
+    name: "Luna",
+    imageUrl: "/images/characters/luna.png",
+  },
+  {
+    name: "Max",
+    imageUrl: "/images/characters/max.png",
+  },
+  {
+    name: "Sarah",
+    imageUrl: "/images/characters/sarah.png",
+  },
+];
 
 export default function StudentPlatform() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -48,7 +68,6 @@ export default function StudentPlatform() {
           <button className={styles.primaryButton}>Get Started</button>
         </div>
         <div className={styles.heroImage}>
-          {/* Grey square placeholder */}
           <div className={styles.placeholder}></div>
         </div>
       </section>
@@ -56,12 +75,24 @@ export default function StudentPlatform() {
       {/* Characters Section */}
       <section className={styles.characters}>
         <p className={styles.characterText}>
-          Meet the gang who&apos;ll be helping by completing a guide series. As
-          you progress, you&apos;ll get badges and unlock more skills!
+          Meet the gang who'll be helping by completing a guide series. As you
+          progress, you'll get rewards and unlock more skills!
         </p>
         <div className={styles.characterGrid}>
-          {[1, 2, 3, 4].map((index) => (
-            <div key={index} className={styles.characterCircle}></div>
+          {characters.map((character, index) => (
+            <div key={index} className={styles.characterCircle}>
+              <Image
+                src={character.imageUrl}
+                alt={character.name}
+                width={80}
+                height={80}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
           ))}
         </div>
       </section>

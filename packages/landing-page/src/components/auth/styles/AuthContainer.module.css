@@ -14,7 +14,7 @@
   max-width: 28rem;
   padding: 2rem;
   margin: 0 auto;
-  background-color: var(--background-color);
+  background-color: var(--theme-foreground);
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -26,14 +26,14 @@
   font-size: 1.875rem;
   font-weight: 700;
   text-align: center;
-  color: var(--foreground-color);
+  color: var(--theme-foreground);
 }
 
 .subtitle {
   margin-bottom: 1.5rem;
   font-size: 1rem;
   text-align: center;
-  color: var(--muted-color);
+  color: var(--theme-muted-foreground);
 }
 
 /* Responsive adjustments */

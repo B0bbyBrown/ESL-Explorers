@@ -4,8 +4,8 @@ import { supabase } from "global-comps/src/utils/supabaseClient";
 import { FormInput } from "../shared/FormInput";
 import { UserPlatform, AuthFormData } from "../types/auth.types";
 import { validateRegistration } from "../utils/authValidation";
-import styles from "../styles/RegistrationForm.module.css";
-import sharedStyles from "../styles/shared.module.css";
+import formStyles from "../Styles/AuthForm.module.css";
+import componentStyles from "../Styles/AuthForm.module.css";
 
 interface RegistrationFormProps {
   platform: UserPlatform;
@@ -54,8 +54,8 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      {error && <div className={sharedStyles.error}>{error}</div>}
+    <form onSubmit={handleSubmit} className={formStyles.authForm}>
+      {error && <div className={formStyles.error}>{error}</div>}
 
       <FormInput
         id="firstName"
@@ -112,14 +112,16 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
         disabled={loading}
       />
 
-      <button type="submit" className={sharedStyles.button} disabled={loading}>
+      <button
+        type="submit"
+        className={componentStyles.button}
+        disabled={loading}
+      >
         {loading ? "Creating Account..." : "Create Account"}
       </button>
 
-      <div className={styles.links}>
-        <Link href="/auth/login" className={sharedStyles.link}>
-          Already have an account? Login here
-        </Link>
+      <div className={componentStyles.links}>
+        <Link href="/auth/login">Already have an account? Login here</Link>
       </div>
     </form>
   );

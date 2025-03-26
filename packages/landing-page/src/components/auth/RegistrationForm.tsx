@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "global-comps/src/utils/supabaseClient";
-import styles from "@/styles/Auth.module.css";
+import formStyles from "@/styles/auth/forms.module.css";
+import componentStyles from "@/styles/auth/components.module.css";
 import Link from "next/link";
 
 interface RegistrationFormProps {
@@ -84,10 +85,10 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
   };
 
   return (
-    <form onSubmit={handleRegister} className={styles.authForm}>
-      {error && <div className={styles.error}>{error}</div>}
+    <form onSubmit={handleRegister} className={formStyles.authForm}>
+      {error && <div className={formStyles.error}>{error}</div>}
 
-      <div className={styles.formGroup}>
+      <div className={formStyles.formGroup}>
         <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"
@@ -99,7 +100,7 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
         />
       </div>
 
-      <div className={styles.formGroup}>
+      <div className={formStyles.formGroup}>
         <label htmlFor="lastName">Last Name</label>
         <input
           id="lastName"
@@ -111,7 +112,7 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
         />
       </div>
 
-      <div className={styles.formGroup}>
+      <div className={formStyles.formGroup}>
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -123,7 +124,7 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
         />
       </div>
 
-      <div className={styles.formGroup}>
+      <div className={formStyles.formGroup}>
         <label htmlFor="password">Password</label>
         <input
           id="password"
@@ -136,7 +137,7 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
         />
       </div>
 
-      <div className={styles.formGroup}>
+      <div className={formStyles.formGroup}>
         <label htmlFor="confirmPassword">Confirm Password</label>
         <input
           id="confirmPassword"
@@ -149,11 +150,15 @@ export const RegistrationForm = ({ platform }: RegistrationFormProps) => {
         />
       </div>
 
-      <button type="submit" disabled={loading} className={styles.submitButton}>
+      <button
+        type="submit"
+        disabled={loading}
+        className={formStyles.submitButton}
+      >
         {loading ? "Registering..." : "Register"}
       </button>
 
-      <div className={styles.links}>
+      <div className={componentStyles.links}>
         <Link href="/auth/login">Already have an account? Login here</Link>
       </div>
     </form>

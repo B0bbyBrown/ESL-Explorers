@@ -31,11 +31,6 @@ export const HeroSection = () => {
           </button>
         </div>
       </div>
-      {/* <img
-        src="/images/hero.jpg"
-        alt="Students learning English"
-        className={styles.heroImage}
-      /> */}
     </section>
   );
 };

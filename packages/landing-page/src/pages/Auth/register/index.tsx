@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import styles from "@/styles/Auth.module.css";
+import layoutStyles from "@/styles/auth/layout.module.css";
+import componentStyles from "@/styles/auth/components.module.css";
 
 export const RegisterPage = () => {
   const router = useRouter();
@@ -10,32 +11,29 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.formContainer}>
-        <h1 className={styles.title}>Join ESL Explorers</h1>
-        <p className={styles.subtitle}>Choose your account type:</p>
+    <div className={layoutStyles.container}>
+      <div className={layoutStyles.formContainer}>
+        <h1 className={layoutStyles.title}>Join ESL Explorers</h1>
+        <p className={layoutStyles.subtitle}>Choose your account type:</p>
 
-        <div className={styles.buttonGroup}>
+        <div className={componentStyles.buttonGroup}>
           <button
             onClick={() => handlePlatformSelect("student")}
-            className={styles.button}
+            className={componentStyles.button}
           >
             Register as Student
           </button>
           <button
             onClick={() => handlePlatformSelect("teacher")}
-            className={styles.button}
+            className={componentStyles.button}
           >
             Register as Teacher
           </button>
         </div>
 
-        <p className={styles.registerLink}>
-          Already have an account?{" "}
-          <Link href="/Auth/login" className={styles.link}>
-            Login here
-          </Link>
-        </p>
+        <div className={componentStyles.links}>
+          <Link href="/Auth/login">Already have an account? Login here</Link>
+        </div>
       </div>
     </div>
   );

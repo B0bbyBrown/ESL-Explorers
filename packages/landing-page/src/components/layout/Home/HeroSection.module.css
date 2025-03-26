@@ -10,7 +10,7 @@
     var(--theme-background) 0%,
     var(--theme-muted) 100%
   );
-  padding: var(--spacing-xl);
+  padding: var(--spacing-2xl);
   position: relative;
   overflow: hidden;
 }

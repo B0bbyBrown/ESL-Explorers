@@ -1,21 +1,18 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import PricingTable from "../components/layout/Pricing/PricingTable";
+import { PricingTable } from "../components/layout/Pricing/PricingTable";
 
-const Pricing: NextPage = () => {
+export const Pricing: NextPage = () => {
   return (
     <>
       <Head>
         <title>Pricing - ESL Explorers</title>
         <meta
           name="description"
-          content="Choose the best plan to improve your English skills."
+          content="Choose the best plan to improve your English skills with ESL Explorers."
         />
       </Head>
-      <div style={{ padding: "2rem" }}>
-        <h1>Our Pricing Plans</h1>
-        <PricingTable />
-      </div>
+      <PricingTable />
     </>
   );
 };

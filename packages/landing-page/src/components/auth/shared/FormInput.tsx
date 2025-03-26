@@ -1,5 +1,5 @@
 import { FormInputProps } from "../types/auth.types";
-import styles from "../styles/FormInput.module.css";
+import formStyles from "../Styles/AuthForm.module.css";
 
 export const FormInput = ({
   id,
@@ -13,8 +13,8 @@ export const FormInput = ({
   error,
 }: FormInputProps) => {
   return (
-    <div className={styles.formGroup}>
-      <label htmlFor={id} className={styles.label}>
+    <div className={formStyles.formGroup}>
+      <label htmlFor={id} className={formStyles.label}>
         {label}
       </label>
       <input
@@ -23,11 +23,11 @@ export const FormInput = ({
         type={type}
         value={value}
         onChange={onChange}
-        className={`${styles.input} ${error ? styles.inputError : ""}`}
+        className={`${formStyles.input} ${error ? formStyles.inputError : ""}`}
         required={required}
         disabled={disabled}
       />
-      {error && <span className={styles.errorText}>{error}</span>}
+      {error && <span className={formStyles.errorText}>{error}</span>}
     </div>
   );
 };

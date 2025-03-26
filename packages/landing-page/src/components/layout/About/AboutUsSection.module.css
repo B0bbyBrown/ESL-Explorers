@@ -1,98 +1,105 @@
 .aboutUs {
   padding: 4rem 2rem;
-  background: #f5f5f5;
+  background-color: var(--theme-background);
+  min-height: calc(100vh - var(--header-height));
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #111;
-  margin-bottom: 2rem;
+  font-size: var(--font-5xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
 }
 
 .description {
   max-width: 800px;
-  margin-bottom: 3rem;
+  margin: 0 auto var(--spacing-3xl);
+  text-align: center;
 }
 
 .description p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #444;
-  margin-bottom: 1.5rem;
+  font-size: var(--font-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
 }
 
 .aboutBtn {
-  padding: 0.75rem 2rem;
-  background: #333;
-  color: white;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  background: var(--accent);
+  color: var(--accent-foreground);
   border: none;
-  border-radius: 2rem;
-  font-size: 1rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-base);
+  font-weight: var(--font-medium);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: var(--transition-colors);
 }
 
 .aboutBtn:hover {
-  background: #444;
+  background: var(--accent-hover);
 }
 
 .tagline {
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #333;
-  margin: 3rem 0;
+  font-size: var(--font-2xl);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  margin: var(--spacing-3xl) 0;
   font-style: italic;
 }
 
 .infoSections {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  margin-bottom: 4rem;
+  gap: var(--spacing-3xl);
+  margin-bottom: var(--spacing-4xl);
 }
 
 .mission,
 .vision,
 .team {
-  padding: 2rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: var(--spacing-2xl);
+  background: var(--theme-foreground);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--theme-border);
 }
 
 .vision {
-  background: #e8f4ff;
-  border: 1px solid #b3d4ff;
+  background: linear-gradient(
+    to bottom right,
+    var(--theme-foreground),
+    var(--theme-muted)
+  );
 }
 
 .mission h2,
 .vision h2,
 .team h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #111;
-  margin-bottom: 1rem;
+  font-size: var(--font-3xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
 }
 
 .mission p,
 .vision p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #666;
+  font-size: var(--font-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-muted);
 }
 
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-2xl);
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
@@ -103,33 +110,45 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: var(--spacing-lg);
+  background: var(--theme-muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--theme-border);
+  transition: var(--transition-all);
+}
+
+.teamMember:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .memberImage {
   width: 160px;
   height: 160px;
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
-  margin-bottom: 1rem;
+  background: var(--theme-foreground);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-lg);
+  overflow: hidden;
 }
 
 .teamMember h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.25rem;
+  font-size: var(--font-xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
 }
 
 .memberRole {
-  color: #666;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.125rem;
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--spacing-xs);
 }
 
 .memberTitle {
-  color: #888;
-  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-size: var(--font-sm);
   font-style: italic;
 }
 
@@ -140,43 +159,53 @@
 
 .cta {
   text-align: center;
-  padding: 3rem;
-  background: white;
-  border-radius: 8px;
-  margin-top: 4rem;
+  padding: var(--spacing-3xl);
+  background: linear-gradient(
+    to bottom right,
+    var(--theme-foreground),
+    var(--theme-muted)
+  );
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--theme-border);
+  margin-top: var(--spacing-4xl);
 }
 
 .cta h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #111;
-  margin-bottom: 1.5rem;
+  font-size: var(--font-3xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xl);
 }
 
 .registerBtn {
-  padding: 0.75rem 2rem;
-  background: #333;
-  color: white;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  background: var(--accent);
+  color: var(--accent-foreground);
   border: none;
-  border-radius: 2rem;
-  font-size: 1rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-base);
+  font-weight: var(--font-medium);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: var(--transition-colors);
 }
 
 .registerBtn:hover {
-  background: #444;
+  background: var(--accent-hover);
 }
 
 @media (max-width: 1024px) {
   .teamGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    gap: var(--spacing-3xl);
     max-width: 600px;
   }
 }
 
 @media (max-width: 480px) {
+  .aboutUs {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
   .teamGrid {
     grid-template-columns: 1fr;
     max-width: 300px;
@@ -185,5 +214,17 @@
   .memberImage {
     width: 200px;
     height: 200px;
+  }
+
+  .title {
+    font-size: var(--font-4xl);
+  }
+
+  .description p {
+    font-size: var(--font-base);
+  }
+
+  .tagline {
+    font-size: var(--font-xl);
   }
 }
