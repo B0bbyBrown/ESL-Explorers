@@ -1,24 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useAuth } from "@/contexts/AuthContext";
-import styles from "./AuthButtons.module.css";
+import styles from "@/components/layout/AuthButtons.module.css";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
-interface AuthButtonsProps {
-  className?: string;
-}
-
-// AuthButtons component for handling authentication state and navigation
-export const AuthButtons = () => {
+const AuthButtonsContent = () => {
   return (
     <div className={styles.authButtons}>
-      <Link href="/login" className={styles.loginButton}>
+      <Link href="/Auth/login" className={styles.loginButton}>
         Login
       </Link>
-      <Link href="/register" className={styles.registerButton}>
+      <Link href="/Auth/register" className={styles.registerButton}>
         Get Started
       </Link>
     </div>
+  );
+};
+
+export const AuthButtons = () => {
+  return (
+    <ErrorBoundary>
+      <AuthButtonsContent />
+    </ErrorBoundary>
   );
 };
 
