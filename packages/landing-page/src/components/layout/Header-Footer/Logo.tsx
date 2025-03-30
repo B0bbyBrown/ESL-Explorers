@@ -1,5 +1,5 @@
 import { Image } from "@/components/common/Image";
-import logoImage from "@/assets/logo/logo.png"; // Direct import
+import logoImage from "@/assets/logo/Logo.png"; // Updated to match actual file name
 import styles from "./Logo.module.css";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ export const Logo = () => {
     <Link href="/" className={styles.logoLink}>
       <div className={styles.logoContainer}>
         <Image
-          src={logoImage} // Use the imported image
+          src={logoImage}
           alt="ESL Explorers"
           width={width}
           height={height}

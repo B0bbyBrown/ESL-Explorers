@@ -4,8 +4,8 @@ import { supabase } from "global-comps/src/utils/supabaseClient";
 import { FormInput } from "../shared/FormInput";
 import { UserPlatform, AuthFormData } from "../types/auth.types";
 import { validateRegistration } from "../utils/authValidation";
-import formStyles from "../Styles/AuthForm.module.css";
-import componentStyles from "../Styles/AuthForm.module.css";
+import formStyles from "../../Styles/AuthForm.module.css";
+import componentStyles from "../../Styles/AuthForm.module.css";
 
 interface RegistrationFormProps {
   platform: UserPlatform;
