@@ -16,21 +16,21 @@
 .heroContent h1 {
   font-size: 2.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
 .heroContent p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 2rem;
 }
 
 .primaryButton {
   padding: 0.875rem 2rem;
-  background: #333;
-  color: white;
+  background: var(--accent);
+  color: var(--accent-foreground);
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -39,57 +39,45 @@
 }
 
 .primaryButton:hover {
-  background: #444;
+  background: var(--accent-hover);
 }
 
 .placeholder {
   width: 100%;
   aspect-ratio: 16/9;
-  background: #e0e0e0;
+  background: var(--theme-muted);
   border-radius: 8px;
 }
 
 /* Characters Section */
 .characters {
-  text-align: center;
   margin: 4rem 0;
   padding: 2rem;
 }
 
-.characterTitle {
-  font-size: var(--font-3xl);
-  font-weight: var(--font-bold);
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-lg);
+.characterContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.characterGridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .characterText {
-  max-width: 600px;
-  margin: 0 auto 2rem;
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #666;
+  color: var(--text-primary);
 }
 
 .characterGrid {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.characterCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--spacing-lg);
-  background: var(--theme-background);
-  border-radius: var(--radius-lg);
-  transition: transform 0.3s ease;
-}
-
-.characterCard:hover {
-  transform: translateY(-5px);
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .characterCircle {
@@ -97,116 +85,82 @@
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
-  background: #e0e0e0;
+  background: var(--theme-muted);
 }
 
-.characterImagePlaceholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--font-4xl);
-  font-weight: var(--font-bold);
-  color: var(--text-secondary);
-  background: linear-gradient(
-    45deg,
-    var(--theme-muted),
-    var(--theme-foreground)
-  );
+.featureText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
 }
 
-.characterName {
-  font-size: var(--font-xl);
-  font-weight: var(--font-bold);
-  color: var(--text-secondary);
-  margin: var(--spacing-sm) 0;
-}
-
-.characterRole {
-  font-size: var(--font-base);
-  color: var(--accent);
-  margin-bottom: var(--spacing-sm);
-  font-weight: var(--font-medium);
-}
-
-.characterDescription {
-  font-size: var(--font-sm);
-  color: var(--text-muted);
-  line-height: var(--leading-relaxed);
-  text-align: center;
-}
-
-/* Planets Carousel Section */
+/* Planets Section */
 .planets {
-  margin-bottom: 4rem;
-  perspective: 2000px;
+  margin: 4rem 0;
+  text-align: center;
 }
 
 .planets h2 {
-  text-align: center;
   font-size: 2rem;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
 }
 
-.carouselContainer {
-  position: relative;
-  height: 500px;
-  width: 100%;
+.planetCarousel {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+  min-height: 800px;
 }
 
-.carousel {
+.planetCircles {
   position: relative;
-  height: 400px;
-  width: 400px;
-  transform-style: preserve-3d;
+  width: 800px;
+  height: 800px;
+  perspective: 1200px;
 }
 
-.carouselTrack {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carouselSlide {
+.windmill {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  left: 50%;
   top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
   transform-style: preserve-3d;
-  transform-origin: 50% 50% -300px; /* Adjust this value to control the radius of rotation */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .planetCircle {
-  width: 200px;
-  height: 200px;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  margin: -75px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: 50% 50%;
   background: radial-gradient(
     circle at 30% 30%,
-    #ffffff 0%,
-    #e0e0e0 30%,
-    #b0b0b0 60%,
-    #909090 100%
+    var(--planet-color, var(--theme-foreground)) 0%,
+    color-mix(in srgb, var(--planet-color, var(--theme-foreground)) 70%, black)
+      50%,
+    color-mix(in srgb, var(--planet-color, var(--theme-foreground)) 40%, black)
+      100%
   );
-  border-radius: 50%;
-  position: relative;
-  box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.2),
-    inset 10px 10px 20px rgba(255, 255, 255, 0.5),
-    8px 8px 16px rgba(0, 0, 0, 0.1);
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.5),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.2),
+    8px 8px 16px rgba(0, 0, 0, 0.3);
+  opacity: 0.7;
   will-change: transform;
+}
+
+.planetCircle:hover {
+  opacity: 0.9;
+  transform: scale(1.1) translateZ(20px);
 }
 
 .planetCircle::before {
@@ -218,11 +172,12 @@
   height: 30%;
   background: radial-gradient(
     circle at center,
-    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.6) 0%,
     rgba(255, 255, 255, 0) 100%
   );
   border-radius: 50%;
-  filter: blur(5px);
+  filter: blur(4px);
+  opacity: 0.8;
 }
 
 .planetCircle::after {
@@ -237,66 +192,118 @@
     135deg,
     transparent 0%,
     transparent 50%,
-    rgba(0, 0, 0, 0.1) 100%
+    rgba(0, 0, 0, 0.4) 100%
   );
 }
 
-.planetName {
-  font-size: 1.1rem;
-  color: #333;
-  text-align: center;
-  margin-top: 1rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.3s ease;
-}
-
-.carouselButton {
-  position: absolute;
-  background: #333;
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.activePlanet {
+  opacity: 1;
+  transform: scale(1.2) translateZ(50px) !important;
+  box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.6),
+    inset 15px 15px 30px rgba(255, 255, 255, 0.25),
+    12px 12px 24px rgba(0, 0, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
 
-.prevButton {
-  left: 20%;
-}
-
-.nextButton {
-  right: 20%;
+.carouselButton {
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 1rem;
+  z-index: 20;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .carouselButton:hover {
-  background: #444;
+  color: var(--text-secondary);
+  transform: scale(1.1);
+}
+
+.planetName {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.spinButton {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--theme-muted);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.spinButton:hover {
+  background: var(--theme-foreground);
+}
+
+.spinButton.active {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+@media (max-width: 1024px) {
+  .planetCarousel {
+    min-height: 600px;
+  }
+
+  .planetCircles {
+    width: 600px;
+    height: 600px;
+  }
+
+  .planetCircle {
+    width: 120px;
+    height: 120px;
+    margin: -60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .planetCarousel {
+    min-height: 400px;
+  }
+
+  .planetCircles {
+    width: 400px;
+    height: 400px;
+  }
+
+  .planetCircle {
+    width: 100px;
+    height: 100px;
+    margin: -50px;
+  }
 }
 
 /* CTA Section */
 .cta {
   text-align: center;
   padding: 4rem 2rem;
-  background: #f5f5f5;
+  background: var(--theme-background);
   border-radius: 8px;
 }
 
 .cta h2 {
   font-size: 2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 2rem;
 }
 
 .registerButton {
   padding: 1rem 3rem;
-  background: #333;
-  color: white;
+  background: var(--accent);
+  color: var(--accent-foreground);
   border: none;
   border-radius: 4px;
   font-size: 1.1rem;
@@ -305,7 +312,7 @@
 }
 
 .registerButton:hover {
-  background: #444;
+  background: var(--accent-hover);
 }
 
 /* Responsive Design */
@@ -327,11 +334,6 @@
   .characterCircle {
     width: 60px;
     height: 60px;
-  }
-
-  .planetCircle {
-    width: 150px;
-    height: 150px;
   }
 
   .cta {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "global-comps/src/utils/supabaseClient";
 import styles from "./Styles/AuthForm.module.css";
 import Link from "next/link";
@@ -14,7 +14,12 @@ export const LoginForm = ({ platform }: LoginFormProps) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,77 +53,60 @@ export const LoginForm = ({ platform }: LoginFormProps) => {
         );
       }
 
-      // Check approval status for teachers
-      if (platform === "teacher" && !userData.approved) {
-        throw new Error("Your teacher account is pending approval");
+      if (!userData.approved) {
+        throw new Error("Your account is pending approval");
       }
 
-      // 3. Update session metadata
-      await supabase.auth.updateUser({
-        data: { role: platform, last_login: new Date().toISOString() },
-      });
-
-      // 4. Redirect to appropriate platform
-      const platformUrl =
-        platform === "teacher"
-          ? process.env.NEXT_PUBLIC_TEACHER_URL
-          : process.env.NEXT_PUBLIC_STUDENT_URL;
-
-      window.location.href = `${platformUrl}/dashboard`;
+      // 3. Redirect based on role
+      if (mounted) {
+        router.push(`/platforms/${platform}`);
+      }
     } catch (error) {
-      console.error("Login error:", error);
-      setError(
-        error instanceof Error ? error.message : "An unexpected error occurred"
-      );
+      setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setLoading(false);
     }
   };
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <form onSubmit={handleLogin} className={styles.authForm}>
       {error && <div className={styles.error}>{error}</div>}
-
       <div className={styles.formGroup}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className={styles.label}>
+          Email
+        </label>
         <input
           id="email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className={styles.input}
           required
-          disabled={loading}
         />
       </div>
-
       <div className={styles.formGroup}>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className={styles.label}>
+          Password
+        </label>
         <input
           id="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={styles.input}
           required
-          disabled={loading}
         />
       </div>
-
-      <Button
-        type="submit"
-        isLoading={loading}
-        size="lg"
-        className={styles.submitButton}
-      >
-        Login
+      <Button type="submit" disabled={loading} className={styles.button}>
+        {loading ? "Logging in..." : "Login"}
       </Button>
-
-      <Button variant="outline" onClick={() => router.push("/register")}>
-        Create Account
-      </Button>
-
-      <div className={styles.links}>
-        <Link href="/auth/forgot-password">Forgot Password?</Link>
-      </div>
+      <Link href={`/Auth/register/${platform}`} className={styles.backLink}>
+        Don&apos;t have an account? Register here
+      </Link>
     </form>
   );
 };
