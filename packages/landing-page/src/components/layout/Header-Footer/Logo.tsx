@@ -1,5 +1,5 @@
 import { Image } from "@/components/common/Image";
-import logoImage from "../../../assets/logo/Logo.png";
+import logoImage from "@/assets/logo/Logo.png";
 import styles from "./Logo.module.css";
 import Link from "next/link";
 

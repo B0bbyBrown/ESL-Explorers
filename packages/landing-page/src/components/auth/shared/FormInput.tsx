@@ -1,5 +1,5 @@
 import { FormInputProps } from "../types/auth.types";
-import formStyles from "../../styles/AuthForm.module.css";
+import formStyles from "../styles/AuthForm.module.css";
 
 export const FormInput = ({
   id,
