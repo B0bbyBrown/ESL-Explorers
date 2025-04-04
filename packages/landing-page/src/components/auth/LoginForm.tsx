@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "global-comps/src/utils/supabaseClient";
-import styles from "./styles/AuthForm.module.css";
+import styles from "./Styles/AuthForm.module.css";
 import Link from "next/link";
 import { Button } from "../ui/Button/Button";
 import { useRouter } from "next/router";

@@ -1,6 +1,7 @@
 import { Image } from "@/components/common/Image";
 import styles from "./Logo.module.css";
 import Link from "next/link";
+import { logoPath } from "@/assets/logo";
 
 export const Logo = () => {
   // Calculate a more reasonable size while maintaining aspect ratio
@@ -12,7 +13,7 @@ export const Logo = () => {
     <Link href="/" className={styles.logoLink}>
       <div className={styles.logoContainer}>
         <Image
-          src="/assets/logo/Logo.png"
+          src={logoPath}
           alt="ESL Explorers"
           width={width}
           height={height}
