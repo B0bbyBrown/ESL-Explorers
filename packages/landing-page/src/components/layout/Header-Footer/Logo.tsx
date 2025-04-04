@@ -1,5 +1,4 @@
 import { Image } from "@/components/common/Image";
-import logoImage from "@/assets/logo/Logo.png";
 import styles from "./Logo.module.css";
 import Link from "next/link";
 
@@ -13,7 +12,7 @@ export const Logo = () => {
     <Link href="/" className={styles.logoLink}>
       <div className={styles.logoContainer}>
         <Image
-          src={logoImage}
+          src="/assets/logo/Logo.png"
           alt="ESL Explorers"
           width={width}
           height={height}
