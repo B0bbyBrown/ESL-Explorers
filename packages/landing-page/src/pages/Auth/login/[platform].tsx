@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LoginForm } from "@/components/auth/LoginForm";
-import styles from "@/components/auth/Styles/AuthForm.module.css";
+import styles from "@/components/auth/styles/AuthForm.module.css";
 
 export const PlatformLoginPage = () => {
   const router = useRouter();
