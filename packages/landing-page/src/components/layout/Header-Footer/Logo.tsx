@@ -1,5 +1,5 @@
 import { Image } from "@/components/common/Image";
-import logoImage from "@/assets/logo/Logo.png"; // Updated to match actual file name
+import logoImage from "../../../assets/logo/Logo.png";
 import styles from "./Logo.module.css";
 import Link from "next/link";
 
