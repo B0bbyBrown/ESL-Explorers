@@ -10,12 +10,32 @@
     var(--theme-background) 0%,
     var(--theme-muted) 100%
   );
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: var(--spacing-2xl);
   position: relative;
   overflow: hidden;
 }
 
 .hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    var(--theme-background) 0%,
+    var(--theme-muted) 100%
+  );
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.hero::after {
   content: "";
   position: absolute;
   top: 0;
@@ -71,8 +91,8 @@
   padding: var(--spacing-sm) var(--spacing-xl);
   border-radius: var(--radius-full);
   font-weight: var(--font-medium);
-  font-size: var(--button-font-size);
-  transition: var(--button-transition);
+  font-size: var(--font-base);
+  transition: var(--transition-all);
   cursor: pointer;
   border: none;
   text-decoration: none;
@@ -84,6 +104,11 @@
   background-color: var(--theme-background);
   color: var(--text-primary);
   border: 2px solid var(--theme-accent);
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .button::before {
@@ -117,6 +142,11 @@
 @media (min-width: 640px) {
   .buttonGroup {
     flex-direction: row;
+  }
+
+  .button {
+    padding: var(--spacing-sm) var(--spacing-2xl);
+    font-size: var(--font-base);
   }
 
   .title {

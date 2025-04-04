@@ -1,7 +1,24 @@
 .tools {
   width: 100%;
   background-color: var(--theme-foreground);
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 6rem 0;
+  position: relative;
+}
+
+.tools::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--theme-foreground);
+  opacity: 0.8;
+  z-index: 0;
 }
 
 .content {
@@ -9,6 +26,8 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .title {
@@ -52,7 +71,7 @@
 .toolCard:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  background-color: var(--card-background-light);
+  background-color: var(--primary-one);
 }
 
 .toolIcon {
@@ -77,12 +96,22 @@
   margin: 0;
 }
 
+.toolCard:hover .toolTitle {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
 .toolDescription {
   font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
   flex-grow: 1;
+}
+
+.toolCard:hover .toolDescription {
+  color: var(--text-primary);
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {

@@ -1,12 +1,31 @@
 .aboutUs {
   padding: 4rem 2rem;
   background-color: var(--theme-background);
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: calc(100vh - var(--header-height));
+  position: relative;
+}
+
+.aboutUs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--theme-background);
+  opacity: 0.8;
+  z-index: 0;
 }
 
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .title {
@@ -14,13 +33,17 @@
   font-weight: var(--font-bold);
   color: var(--text-primary);
   margin-bottom: var(--spacing-2xl);
-  text-align: center;
+  text-align: left;
+  position: relative;
+  z-index: 1;
 }
 
 .description {
   max-width: 800px;
   margin: 0 auto var(--spacing-3xl);
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .description p {
@@ -53,6 +76,8 @@
   color: var(--text-secondary);
   margin: var(--spacing-3xl) 0;
   font-style: italic;
+  position: relative;
+  z-index: 1;
 }
 
 .infoSections {
@@ -60,6 +85,8 @@
   flex-direction: column;
   gap: var(--spacing-3xl);
   margin-bottom: var(--spacing-4xl);
+  position: relative;
+  z-index: 1;
 }
 
 .mission,
@@ -168,6 +195,8 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--theme-border);
   margin-top: var(--spacing-4xl);
+  position: relative;
+  z-index: 1;
 }
 
 .cta h2 {

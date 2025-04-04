@@ -1,7 +1,14 @@
 .footer {
   background: var(--theme-foreground);
-  padding: 4rem 2rem 1rem;
+  padding: 4rem 0 1rem;
   color: var(--text-primary);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
 }
 
 .footerContent {
@@ -10,15 +17,19 @@
   display: flex;
   justify-content: space-between;
   gap: 4rem;
+  padding: 0 2rem;
 }
 
 .logoSection {
   flex-shrink: 0;
+  flex: 1;
 }
 
 .linksSection {
   display: flex;
-  gap: 17rem;
+  gap: 8rem;
+  flex: 2;
+  justify-content: space-between;
 }
 
 .column {
@@ -42,19 +53,18 @@
 }
 
 .column a:hover {
-  color: var(--text-secondary);
+  color: var(--accent);
 }
 
 .bottomBar {
   max-width: 1200px;
   margin: 3rem auto 0;
-  padding-top: 1.5rem;
+  padding: 1.5rem 2rem 0;
   border-top: 1px solid var(--card-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   gap: 2rem;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .bottomBar p {
@@ -63,12 +73,25 @@
   margin: 0;
 }
 
+.bottomBar p:nth-child(1) {
+  text-align: left;
+}
+
+.bottomBar p:nth-child(2) {
+  text-align: center;
+}
+
+.bottomBar p:nth-child(3) {
+  text-align: right;
+}
+
 @media (max-width: 768px) {
   .footer {
-    padding: 2rem 1rem;
+    padding: 2rem 0;
   }
 
   .footerContent {
+    padding: 0 1rem;
     flex-direction: column;
     gap: 2rem;
   }
@@ -83,9 +106,14 @@
   }
 
   .bottomBar {
-    margin-top: 2rem;
-    flex-direction: column;
+    padding: 1.5rem 1rem 0;
+    grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .bottomBar p:nth-child(1),
+  .bottomBar p:nth-child(2),
+  .bottomBar p:nth-child(3) {
     text-align: center;
   }
 }
