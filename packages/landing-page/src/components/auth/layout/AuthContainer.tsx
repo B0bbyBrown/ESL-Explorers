@@ -1,5 +1,5 @@
 import { AuthContainerProps } from "../types/auth.types";
-import layoutStyles from "../Styles/AuthContainer.module.css";
+import layoutStyles from "../styles/AuthContainer.module.css";
 
 export const AuthContainer = ({
   children,
