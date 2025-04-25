@@ -1,0 +1,19 @@
+{
+  "variant": "vibrant",
+  "primary": "#321B52",
+  "secondary": "#F47538",
+  "appearance": "light",
+  "radius": 0.75,
+  "colors": {
+    "purple": {
+      "dark": "#321B52",
+      "medium": "#452674",
+      "darkest": "#0E0A20"
+    },
+    "yellow": {
+      "light": "#FCD069",
+      "medium": "#FBBC3C"
+    },
+    "orange": "#F47538"
+  }
+}

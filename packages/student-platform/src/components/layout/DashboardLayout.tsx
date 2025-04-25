@@ -8,10 +8,7 @@ interface DashboardLayoutProps {
   setActivePage: (page: string) => void;
 }
 
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({
-  children,
-  setActivePage,
-}) => {
+const DashboardLayout = ({ children, setActivePage }: DashboardLayoutProps) => {
   return (
     <div className={styles.dashboardLayout}>
       <Sidebar setActivePage={setActivePage} />
